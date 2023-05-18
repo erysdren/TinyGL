@@ -1,6 +1,4 @@
 
-#include <GL/gl.h>
-
 void draw();
 void idle();
 GLenum key(int k, GLenum mask);

@@ -18,6 +18,9 @@ GL_DEPS = ../source/libTinyGL.a
 # programs
 PROGS = mech texobj gears spin
 
+# ui
+UI_OBJS = ui.o
+
 #
 # targets
 #
@@ -27,7 +30,7 @@ all: $(PROGS)
 clean:
 	rm -f core *.o *~ $(PROGS)
 
-mech: mech.o glu.o $(UI_OBJS) $(GL_DEPS)
+mech: mech.o $(UI_OBJS) $(GL_DEPS)
 	$(CC) $(LFLAGS) $^ -o $@ $(GL_LIBS) $(UI_LIBS) -lm
 
 texobj: texobj.o $(UI_OBJS) $(GL_DEPS)
@@ -41,9 +44,5 @@ spin: spin.o $(UI_OBJS) $(GL_DEPS)
 
 .c.o:
 	$(CC) $(CFLAGS) $(GL_INCLUDES) $(UI_INCLUDES) -c $*.c
-
-mech.o: glu.h 
-
-glu.o: glu.h
 
 ui.o: ui.h

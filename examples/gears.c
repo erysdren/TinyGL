@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <GL/glx.h> 
 #include <GL/gl.h> 
 #include "ui.h"
 
@@ -184,7 +183,7 @@ void draw( void )
 
    glPopMatrix();
 
-   tkSwapBuffers();
+   swap_buffers();
 
    count++;
    if (count==limit) {

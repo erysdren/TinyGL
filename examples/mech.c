@@ -61,8 +61,7 @@
 #define GLUT_KEY
 #define GLUT_SPEC
 #include <GL/gl.h>
-#include <GL/glx.h>
-#include "glu.h"
+#include <GL/glu.h>
 #include "ui.h"
 
 /* end of header files */
@@ -1241,7 +1240,7 @@ display(void)
 #endif
   glPopMatrix();
   glFlush();
-  tkSwapBuffers();
+  swap_buffers();
 }
 
 void

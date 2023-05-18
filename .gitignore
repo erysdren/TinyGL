@@ -9,3 +9,8 @@ local/
 # objects
 *.o
 *.a
+*.exe
+examples/gears
+examples/mech
+examples/spin
+examples/texobj
