@@ -15,6 +15,8 @@ See `examples/ui.c` for an example of implementing TinyGL under SDL2.
 - [ ] Clean up syntax where necessary
 - [ ] Implement more GLU functions
 - [ ] Implement areas of OpenGL 1.1 and 1.2 that are missing
+- [ ] Fixed-point math
+- [ ] Native 8bpp renderng
 
 ## License
 
