@@ -1,0 +1,7 @@
+
+# vs code
+.vscode/
+*.code-workspace
+
+# local files
+local/
