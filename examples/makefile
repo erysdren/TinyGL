@@ -1,6 +1,21 @@
-include ../config.mk
 
+# compiler and flags
+CC ?= gcc
+CFLAGS += -pedantic -Wall -Wextra
+
+# debug
+ifdef DEBUG
+CFLAGS += -g -fsanitize=address,undefined
+else
+CFLAGS += -O3
+endif
+
+# programs
 PROGS = mech texobj gears spin
+
+#
+# targets
+#
 
 all: $(PROGS)
 
@@ -20,7 +35,7 @@ spin: spin.o $(UI_OBJS) $(GL_DEPS)
 	$(CC) $(LFLAGS) $^ -o $@ $(GL_LIBS) $(UI_LIBS) -lm
 
 .c.o:
-	$(CC)	$(CFLAGS) $(GL_INCLUDES) $(UI_INCLUDES) -c $*.c
+	$(CC) $(CFLAGS) $(GL_INCLUDES) $(UI_INCLUDES) -c $*.c
 
 mech.o: glu.h 
 
