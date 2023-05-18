@@ -11,7 +11,7 @@ CFLAGS += -O3
 endif
 
 # include
-GL_LIBS = -L../source -lTinyGL 
+GL_LIBS = -L../source -lTinyGL `sdl2-config --libs --cflags`
 GL_INCLUDES = -I../include
 GL_DEPS = ../source/libTinyGL.a
 
