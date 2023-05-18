@@ -29,7 +29,7 @@ int height;
 int ui_loop(int argc, char **argv, const char *name)
 {
 	/* init sdl */
-	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
+	SDL_Init(SDL_INIT_VIDEO);
 
 	/* yeah */
 	width = WIDTH;
