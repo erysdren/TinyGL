@@ -3,6 +3,9 @@
 .vscode/
 *.code-workspace
 
+# cmake
+cmake-build*/
+
 # local files
 local/
 
