@@ -1,5 +1,5 @@
 
-#include <GL/gl.h>
+#include "gl.h"
 
 void gluPerspective( GLdouble fovy, GLdouble aspect,
 		     GLdouble zNear, GLdouble zFar );
