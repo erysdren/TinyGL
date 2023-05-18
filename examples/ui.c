@@ -28,6 +28,10 @@ int height;
 /* open window, handle inputs */
 int ui_loop(int argc, char **argv, const char *name)
 {
+	/* suppress warnings */
+	(void)argc;
+	(void)argv;
+
 	/* init sdl */
 	SDL_Init(SDL_INIT_VIDEO);
 
