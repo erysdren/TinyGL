@@ -77,12 +77,14 @@ int ui_loop(int argc, char **argv, const char *name)
 					switch (event.window.event)
 					{
 						case SDL_WINDOWEVENT_SIZE_CHANGED:
+						{
 							width = event.window.data1;
 							height = event.window.data2;
 							pixels = realloc(pixels, width * height * (BPP / 8));
 							ostgl_resize(ctx, width, height, &pixels);
 							reshape(width, height);
 							break;
+						}
 					}
 				}
 			}
