@@ -4,6 +4,10 @@
 void gluPerspective( GLdouble fovy, GLdouble aspect,
 		     GLdouble zNear, GLdouble zFar );
 
+void gluLookAt(GLdouble eyex, GLdouble eyey, GLdouble eyez,
+	GLdouble centerx, GLdouble centery, GLdouble centerz,
+	GLdouble upx, GLdouble upy, GLdouble upz);
+
 typedef struct {
   int draw_style;
 } GLUquadricObj;
