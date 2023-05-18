@@ -5,3 +5,7 @@
 
 # local files
 local/
+
+# objects
+*.o
+*.a
