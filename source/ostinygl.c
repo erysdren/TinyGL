@@ -1,4 +1,4 @@
-#include <GL/oscontext.h>
+#include <GL/ostinygl.h>
 #include "zbuffer.h"
 #include "zgl.h"
 #include <GL/gl.h>

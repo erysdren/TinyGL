@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 
 #include <GL/gl.h>
-#include <GL/oscontext.h>
+#include <GL/ostinygl.h>
 
 #include "ui.h"
 
