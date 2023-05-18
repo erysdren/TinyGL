@@ -4,6 +4,8 @@ An extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
 
 Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
+See `examples/ui.c` for an example of implementing TinyGL under SDL2.
+
 ## Todo
 
 - [x] Port examples to platform-agnostic window system
