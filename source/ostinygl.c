@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
+static int num_contexts = 0;
+
 /* create offscreen tinygl context with provided dimensions and depth */
 ostgl_context *ostgl_create_context(int width, int height, int depth)
 {
@@ -28,7 +30,8 @@ ostgl_context *ostgl_create_context(int width, int height, int depth)
 	assert(context->zb != NULL);
 
 	/* init gl */
-	glInit((ZBuffer *)context->zb);
+	if (++num_contexts == 1)
+		glInit((ZBuffer *)context->zb);
 
 	/* init values */
 	context->width = width;
@@ -39,13 +42,23 @@ ostgl_context *ostgl_create_context(int width, int height, int depth)
 	return context;
 }
 
+/* make current */
+void ostgl_make_current(ostgl_context *context)
+{
+	GLContext *glcontext = gl_get_context();
+	assert(glcontext != NULL);
+	glcontext->zb = (ZBuffer *)context->zb;
+}
+
 /* delete zbuffers and free all memory */
 void ostgl_delete_context(ostgl_context *context)
 {
 	ZB_close((ZBuffer *)context->zb);
 	gl_free(context->pixels);
 	gl_free(context);
-	glClose();
+
+	if (--num_contexts == 0)
+		glClose();
 }
 
 /* resize all zbuffers in context */

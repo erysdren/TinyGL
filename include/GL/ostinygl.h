@@ -16,6 +16,7 @@ typedef struct
 
 /* functions */
 ostgl_context *ostgl_create_context(int width, int height, int depth);
+void ostgl_make_current(ostgl_context *context);
 void ostgl_delete_context(ostgl_context *context);
 void ostgl_resize(ostgl_context *context, int width, int height);
 
