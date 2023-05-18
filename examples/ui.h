@@ -1,9 +1,12 @@
 
+/* program-defined */
 void draw();
 void idle();
 GLenum key(int k, GLenum mask);
 void reshape(int width, int height);
 void init();
+
+/* open window, swap buffer */
 int ui_loop(int argc, char **argv, const char *name);
 void swap_buffers();
 
