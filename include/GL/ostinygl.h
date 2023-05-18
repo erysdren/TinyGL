@@ -5,30 +5,19 @@
 extern "C" {
 #endif
 
-typedef struct {
-  void **zbs;
-  void **framebuffers;
-  int numbuffers;
-  int xsize, ysize;
+/* struct type */
+typedef struct
+{
+	void *zb;
+	void *pixels;
+	int width, height;
+	int depth;
 } ostgl_context;
 
-ostgl_context *
-ostgl_create_context(const int xsize,
-                     const int ysize,
-                     const int depth,
-                     void **framebuffers,
-                     const int numbuffers);
-void
-ostgl_delete_context(ostgl_context *context);
-
-void
-ostgl_make_current(ostgl_context *context, const int index);
-
-void
-ostgl_resize(ostgl_context * context,
-             const int xsize,
-             const int ysize,
-             void **framebuffers);
+/* functions */
+ostgl_context *ostgl_create_context(int width, int height, int depth);
+void ostgl_delete_context(ostgl_context *context);
+void ostgl_resize(ostgl_context *context, int width, int height);
 
 #ifdef __cplusplus
 }

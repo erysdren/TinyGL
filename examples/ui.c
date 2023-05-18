@@ -17,13 +17,10 @@
 
 /* globals */
 ostgl_context *ctx;
-void *pixels;
 int running;
 SDL_Window *window;
 SDL_Renderer *renderer;
 SDL_Texture *texture;
-int width;
-int height;
 
 /* open window, handle inputs */
 int ui_loop(int argc, char **argv, const char *name)
@@ -35,28 +32,22 @@ int ui_loop(int argc, char **argv, const char *name)
 	/* init sdl */
 	SDL_Init(SDL_INIT_VIDEO);
 
-	/* yeah */
-	width = WIDTH;
-	height = HEIGHT;
-
 	/* alloc */
-	pixels = malloc(WIDTH * HEIGHT * (BPP / 8));
-	ctx = ostgl_create_context(WIDTH, HEIGHT, BPP, &pixels, 1);
-	ostgl_make_current(ctx, 0);
+	ctx = ostgl_create_context(WIDTH, HEIGHT, BPP);
 
 	/* call user functions */
 	init();
-	reshape(WIDTH, HEIGHT);
+	reshape(ctx->width, ctx->height);
 
 	/* create sdl context */
 	window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
+		SDL_WINDOWPOS_CENTERED, ctx->width, ctx->height, SDL_WINDOW_RESIZABLE);
 
 	renderer = SDL_CreateRenderer(window, -1,
 		SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_SOFTWARE);
 
 	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565,
-		SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
+		SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
 
 	/* main loop */
 	running = SDL_TRUE;
@@ -82,11 +73,8 @@ int ui_loop(int argc, char **argv, const char *name)
 					{
 						case SDL_WINDOWEVENT_SIZE_CHANGED:
 						{
-							width = event.window.data1;
-							height = event.window.data2;
-							pixels = realloc(pixels, width * height * (BPP / 8));
-							ostgl_resize(ctx, width, height, &pixels);
-							reshape(width, height);
+							ostgl_resize(ctx, event.window.data1, event.window.data2);
+							reshape(event.window.data1, event.window.data2);
 							break;
 						}
 					}
@@ -115,7 +103,6 @@ int ui_loop(int argc, char **argv, const char *name)
 
 	/* shutdown */
 	ostgl_delete_context(ctx);
-	free(pixels);
 	SDL_Quit();
 
 	/* return success */
@@ -125,7 +112,7 @@ int ui_loop(int argc, char **argv, const char *name)
 /* swap buffers */
 void swap_buffers()
 {
-	SDL_UpdateTexture(texture, NULL, pixels, width * (BPP / 8));
+	SDL_UpdateTexture(texture, NULL, ctx->pixels, ctx->width * (ctx->depth / 8));
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);

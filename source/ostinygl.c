@@ -5,87 +5,53 @@
 #include <stdlib.h>
 #include <assert.h>
 
-static int buffercnt = 0;
-
-/* create offscreen tinygl context with provided dimensions, depth and framebuffers */
-ostgl_context *ostgl_create_context(const int xsize, const int ysize, const int depth, void **framebuffers, const int numbuffers)
+/* create offscreen tinygl context with provided dimensions and depth */
+ostgl_context *ostgl_create_context(int width, int height, int depth)
 {
+	/* variables */
 	ostgl_context *context;
-	int i;
-	ZBuffer *zb;
 
-	assert(depth == 16); /* support for other depths must include bpp convertion */
-	assert(numbuffers >= 1);
+	/* check parameter validitiy */
+	assert(width && height);
+	assert(depth == 16);
 
+	/* allocate context */
 	context = gl_malloc(sizeof(ostgl_context));
-	assert(context);
-	context->zbs = gl_malloc(sizeof(void*)*numbuffers);
-	context->framebuffers = gl_malloc(sizeof(void*)*numbuffers);
+	assert(context != NULL);
 
-	assert(context->zbs != NULL && context->framebuffers != NULL);
+	/* allocate pixels */
+	context->pixels = gl_malloc(width * height * (depth / 8));
+	assert(context->pixels != NULL);
 
-	for (i = 0; i < numbuffers; i++)
-	{
-		/* assign framebuffers and open zb */
-		context->framebuffers[i] = framebuffers[i];
-		zb = ZB_open(xsize, ysize, ZB_MODE_5R6G5B, 0, NULL, NULL, framebuffers[i]);
+	/* open zbuffer */
+	context->zb = ZB_open(width, height, ZB_MODE_5R6G5B, 0, NULL, NULL, context->pixels);
+	assert(context->zb != NULL);
 
-		/* check for error */
-		if (zb == NULL)
-		{
-			fprintf(stderr, "Error while initializing Z buffer\n");
-			return NULL;
-		}
+	/* init gl */
+	glInit((ZBuffer *)context->zb);
 
-		context->zbs[i] = zb;
-	}
-	if (++buffercnt == 1)
-	{
-		glInit(context->zbs[0]);
-	}
+	/* init values */
+	context->width = width;
+	context->height = height;
+	context->depth = depth;
 
-	context->xsize = xsize;
-	context->ysize = ysize;
-	context->numbuffers = numbuffers;
-
+	/* return ptr */
 	return context;
 }
 
 /* delete zbuffers and free all memory */
 void ostgl_delete_context(ostgl_context *context)
 {
-	int i;
-
-	for (i = 0; i < context->numbuffers; i++)
-	{
-		ZB_close(context->zbs[i]);
-	}
-
-	gl_free(context->zbs);
-	gl_free(context->framebuffers);
+	ZB_close((ZBuffer *)context->zb);
+	gl_free(context->pixels);
 	gl_free(context);
-
-	if (--buffercnt == 0)
-	{
-		glClose();
-	}
-}
-
-/* set specified zbuffer to current */
-void ostgl_make_current(ostgl_context *oscontext, const int idx)
-{
-	GLContext *context = gl_get_context();
-	assert(idx < oscontext->numbuffers);
-	context->zb = oscontext->zbs[idx];
+	glClose();
 }
 
 /* resize all zbuffers in context */
-void ostgl_resize(ostgl_context *context, const int xsize, const int ysize, void **framebuffers)
+void ostgl_resize(ostgl_context *context, int width, int height)
 {
-	int i;
-
-	for (i = 0; i < context->numbuffers; i++)
-	{
-		ZB_resize(context->zbs[i], framebuffers[i], xsize, ysize);
-	}
+	context->width = width;
+	context->height = height;
+	ZB_resize(context->zb, context->pixels, width, height);
 }
