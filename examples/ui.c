@@ -86,6 +86,22 @@ int ui_loop(int argc, char **argv, const char *name)
 							break;
 						}
 					}
+					break;
+				}
+				
+				/* key event */
+				case SDL_KEYDOWN:
+				{
+					switch (event.key.keysym.scancode)
+					{
+						case SDL_SCANCODE_UP: key(KEY_UP, 0); break;
+						case SDL_SCANCODE_DOWN: key(KEY_DOWN, 0); break;
+						case SDL_SCANCODE_LEFT: key(KEY_LEFT, 0); break;
+						case SDL_SCANCODE_RIGHT: key(KEY_RIGHT, 0); break;
+						case SDL_SCANCODE_ESCAPE: key(KEY_ESCAPE, 0); break;
+						default: key(event.key.keysym.sym, 0); break;
+					}
+					break;
 				}
 			}
 		}
