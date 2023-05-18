@@ -25,7 +25,7 @@ target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
 # examples
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
 
-if(TINYGL_BUILD_EXAMPLES)
+if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP)
 
 	find_package(SDL2 REQUIRED)
 	link_libraries(TinyGL SDL2::SDL2)
