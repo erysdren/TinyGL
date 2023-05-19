@@ -742,9 +742,10 @@ void glFrustum(double left,double right,double bottom,double top,
 /* lists */
 unsigned int glGenLists(int range);
 int glIsList(unsigned int list);
-void glNewList(unsigned int list,int mode);
+void glNewList(unsigned int list, int mode);
 void glEndList(void);
 void glCallList(unsigned int list);
+void glDeleteLists(unsigned int list, int range);
 
 /* clear */
 void glClear(int mask);
