@@ -2,6 +2,8 @@
 
 An extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
 
+The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions.
+
 Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
 See `examples/ui.c` for an example of implementing TinyGL under SDL2.
@@ -16,7 +18,7 @@ See `examples/ui.c` for an example of implementing TinyGL under SDL2.
 - [ ] Implement more GLU functions
 - [ ] Implement areas of OpenGL 1.1 and 1.2 that are missing
 - [ ] Fixed-point math
-- [ ] Native 8bpp renderng
+- [ ] Native 8bpp renderng with predefined palette
 
 ## License
 
