@@ -1,5 +1,7 @@
 # TinyGL
 
+![a 3D render of multiple gears floating in empty space, one red, one blue, and one green.](.github/tgl_gears.png)
+
 An extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
 
 The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions.
