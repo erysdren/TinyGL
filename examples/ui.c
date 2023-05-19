@@ -34,6 +34,7 @@ int ui_loop(int argc, char **argv, const char *name)
 
 	/* alloc */
 	ctx = ostgl_create_context(WIDTH, HEIGHT, BPP);
+	ostgl_make_current(ctx);
 
 	/* call user functions */
 	init();
