@@ -811,7 +811,6 @@ void glPolygonOffset(GLfloat factor, GLfloat units);
   /*
 inline void glPointSize(float) {}
 inline void glLineWidth(float) {}
-inline void glDeleteLists(int, int) {}
 inline void glDepthFunc(int) {}
 inline void glBlendFunc(int, int) {}
 inline void glTexEnvf(int, int, int) {}
