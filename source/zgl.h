@@ -11,6 +11,10 @@
 #include "zmath.h"
 #include "zfeatures.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 #define DEBUG
 /* #define NDEBUG */
 
@@ -329,23 +333,6 @@ void gl_fatal_error(char *format, ...);
 /* specular buffer "api" */
 GLSpecBuf *specbuf_get_buffer(GLContext *c, const int shininess_i, 
                               const float shininess);
-
-#ifdef __BEOS__
-void dprintf(const char *, ...);
-
-#else /* !BEOS */
-
-#ifdef DEBUG
-
-#define dprintf(format, args...)  \
-  fprintf(stderr,"In '%s': " format "\n",__FUNCTION__, ##args);
-
-#else
-
-#define dprintf(format, args...)
-
-#endif
-#endif /* !BEOS */
 
 /* glopXXX functions */
 

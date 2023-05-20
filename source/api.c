@@ -352,7 +352,7 @@ void glViewport(int x,int y,int width,int height)
 }
 
 void glFrustum(double left,double right,double bottom,double top,
-               double near,double farv)
+               double nearv,double farv)
 {
   GLParam p[7];
 
@@ -361,7 +361,7 @@ void glFrustum(double left,double right,double bottom,double top,
   p[2].f=right;
   p[3].f=bottom;
   p[4].f=top;
-  p[5].f=near;
+  p[5].f=nearv;
   p[6].f=farv;
 
   gl_add_op(p);
