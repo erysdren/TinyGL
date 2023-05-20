@@ -1,6 +1,7 @@
+
+/* guard */
 #ifndef _tgl_osbuffer_h_
 #define _tgl_osbuffer_h_
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -20,8 +21,8 @@ void ostgl_make_current(ostgl_context *context);
 void ostgl_delete_context(ostgl_context *context);
 void ostgl_resize(ostgl_context *context, int width, int height);
 
+/* guard */
 #ifdef __cplusplus
 }
 #endif
-
 #endif /* _tgl_osbuffer_h_ */
