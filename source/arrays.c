@@ -244,7 +244,7 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type,
 			break;
 		}
 
-		/* uint16 */
+		/* uint32 */
 		case GL_UNSIGNED_INT:
 		{
 			glBegin(mode);
