@@ -184,7 +184,7 @@ void glopCallList(GLContext *c,GLParam *p)
   }
 }
 
-void glDeleteLists(GLuint list, GLsizei range)
+void glDeleteLists(unsigned int list, int range)
 {
 	GLList *l;
 	int i;
@@ -199,7 +199,7 @@ void glDeleteLists(GLuint list, GLsizei range)
 	}
 }
 
-void glNewList(unsigned int list,int mode)
+void glNewList(unsigned int list, int mode)
 {
   GLList *l;
   GLContext *c=gl_get_context();
