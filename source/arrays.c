@@ -206,3 +206,82 @@ glTexCoordPointer(GLint size, GLenum type, GLsizei stride,
   p[3].p = (void*)pointer;
   gl_add_op(p);
 }
+
+/*
+ * erysdren
+ */
+
+void glDrawElements(GLenum mode, GLsizei count, GLenum type,
+                       const GLvoid *indices)
+{
+	/* variables */
+	int i;
+
+	/* begin */
+	glBegin(mode);
+
+	/* type */
+	switch (type)
+	{
+		/* uint8 */
+		case GL_UNSIGNED_BYTE:
+		{
+			GLubyte *array = (GLubyte *)indices;
+			for (i = 0; i < count; i++)
+			{
+				glArrayElement((GLint)array[i]);
+			}
+			break;
+		}
+
+		/* uint16 */
+		case GL_UNSIGNED_SHORT:
+		{
+			GLushort *array = (GLushort *)indices;
+			for (i = 0; i < count; i++)
+			{
+				glArrayElement((GLint)array[i]);
+			}
+			break;
+		}
+
+		/* uint32 */
+		case GL_UNSIGNED_INT:
+		{
+			GLuint *array = (GLuint *)indices;
+			for (i = 0; i < count; i++)
+			{
+				glArrayElement((GLint)array[i]);
+			}
+			break;
+		}
+
+		/* fail */
+		default:
+		{
+			assert(0);
+		}
+	}
+
+	/* end */
+	glEnd();
+}
+
+/* probably a hack */
+void glDrawArrays(GLenum mode, GLint first, GLsizei count)
+{
+	/* variables */
+	int i;
+
+	/* begin */
+	glBegin(mode);
+
+	/* do elements */
+	for (i = 0; i < count; i++)
+	{
+		glArrayElement(first + i);
+	}
+
+	/* end */
+	glEnd();
+}

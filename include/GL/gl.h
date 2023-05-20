@@ -803,6 +803,9 @@ void glNormalPointer(GLenum type, GLsizei stride,
                       const GLvoid *pointer);
 void glTexCoordPointer(GLint size, GLenum type, GLsizei stride, 
                        const GLvoid *pointer);
+void glDrawElements(GLenum mode, GLsizei count, GLenum type,
+                       const GLvoid *indices);
+void glDrawArrays(GLenum mode, GLint first, GLsizei count);
 
 /* opengl 1.2 polygon offset */
 void glPolygonOffset(GLfloat factor, GLfloat units);
