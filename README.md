@@ -10,6 +10,10 @@ Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
 See `examples/ui.c` for an example of implementing TinyGL under SDL2.
 
+## Limitations
+
+- In the OSTinyGL module, only 16bpp is currently supported.
+
 ## Todo
 
 - [x] Port examples to platform-agnostic window system
