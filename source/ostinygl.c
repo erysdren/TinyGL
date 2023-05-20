@@ -66,5 +66,6 @@ void ostgl_resize(ostgl_context *context, int width, int height)
 {
 	context->width = width;
 	context->height = height;
+	context->pixels = realloc(context->pixels, width * height * (context->depth / 8));
 	ZB_resize(context->zb, context->pixels, width, height);
 }
