@@ -217,57 +217,55 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type,
 	/* variables */
 	int i;
 
-	/* begin */
-	glBegin(mode);
-
 	/* type */
 	switch (type)
 	{
 		/* uint8 */
 		case GL_UNSIGNED_BYTE:
 		{
-			GLubyte *array = (GLubyte *)indices;
+			glBegin(mode);
 			for (i = 0; i < count; i++)
 			{
-				glArrayElement((GLint)array[i]);
+				glArrayElement((GLint)((GLubyte *)indices)[i]);
 			}
+			glEnd();
 			break;
 		}
 
 		/* uint16 */
 		case GL_UNSIGNED_SHORT:
 		{
-			GLushort *array = (GLushort *)indices;
+			glBegin(mode);
 			for (i = 0; i < count; i++)
 			{
-				glArrayElement((GLint)array[i]);
+				glArrayElement((GLint)((GLushort *)indices)[i]);
 			}
+			glEnd();
 			break;
 		}
 
-		/* uint32 */
+		/* uint16 */
 		case GL_UNSIGNED_INT:
 		{
-			GLuint *array = (GLuint *)indices;
+			glBegin(mode);
 			for (i = 0; i < count; i++)
 			{
-				glArrayElement((GLint)array[i]);
+				glArrayElement((GLint)((GLuint *)indices)[i]);
 			}
+			glEnd();
 			break;
 		}
 
-		/* fail */
 		default:
 		{
-			assert(0);
+			gl_fatal_error("glDrawElements with invalid type!");
+			break;
 		}
 	}
-
-	/* end */
-	glEnd();
 }
 
 /* probably a hack */
+/* mesa's version of this function is way more complex */
 void glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
 	/* variables */
