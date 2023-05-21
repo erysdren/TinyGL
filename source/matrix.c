@@ -217,16 +217,16 @@ void glopFrustum(GLContext *c,GLParam *p)
   float right=p[2].f;
   float bottom=p[3].f;
   float top=p[4].f;
-  float near=p[5].f;
+  float nearv=p[5].f;
   float farp=p[6].f;
   float x,y,A,B,C,D;
 
-  x = (2.0*near) / (right-left);
-  y = (2.0*near) / (top-bottom);
+  x = (2.0*nearv) / (right-left);
+  y = (2.0*nearv) / (top-bottom);
   A = (right+left) / (right-left);
   B = (top+bottom) / (top-bottom);
-  C = -(farp+near) / ( farp-near);
-  D = -(2.0*farp*near) / (farp-near);
+  C = -(farp+nearv) / ( farp-nearv);
+  D = -(2.0*farp*nearv) / (farp-nearv);
 
   r=&m.m[0][0];
   r[0]= x; r[1]=0; r[2]=A; r[3]=0;
