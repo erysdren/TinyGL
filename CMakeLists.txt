@@ -32,7 +32,7 @@ add_library(TinyGL STATIC ${TINYGL_SOURCES})
 target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # examples
-if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM)
+if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM AND NOT HAIKU_i586)
 
 	find_package(SDL2 REQUIRED)
 	link_libraries(TinyGL SDL2::SDL2)
