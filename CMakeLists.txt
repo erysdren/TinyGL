@@ -9,7 +9,6 @@ option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
 option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
 
 # compile options
-
 if(NOT WATCOM)
 	add_compile_options(-pedantic -Wall -Wextra)
 	if(CMAKE_BUILD_TYPE STREQUAL "Release")
@@ -36,7 +35,7 @@ add_library(TinyGL STATIC ${TINYGL_SOURCES})
 target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # examples
-if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM AND NOT HAIKU_i586)
+if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM)
 
 	find_package(SDL2 REQUIRED)
 	link_libraries(TinyGL SDL2::SDL2)
