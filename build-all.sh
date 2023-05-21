@@ -15,3 +15,15 @@ cd ..
 # mingw i686
 source ./build-mingw-i686.sh
 cd ..
+
+# watcom
+source ./build-watcom.sh
+cd ..
+
+# haiku i586
+source ./build-haiku-i586.sh
+cd ..
+
+# haiku x86_64
+source ./build-haiku-x86_64.sh
+cd ..
