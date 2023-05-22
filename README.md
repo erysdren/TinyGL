@@ -10,6 +10,16 @@ Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
 See `examples/ui.c` for an example of implementing TinyGL under SDL2.
 
+## Platforms
+
+With the appropriate compilers installed, TinyGL can be built with:
+
+- GCC (Linux)
+- GCC (MinGW)
+- GCC (Haiku OS)
+- GCC (DJGPP)
+- Open Watcom
+
 ## Limitations
 
 - In the OSTinyGL module, only 16bpp is currently supported.
