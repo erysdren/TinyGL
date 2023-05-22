@@ -51,6 +51,7 @@ void ZB_generateCLUT(ZBuffer *zb, ZBufferRGB *colors)
 {
 	/* variables */
 	int i, r, g, b;
+	uint16_t val;
 
 	/* allocate palette */
 	zb->palette = gl_zalloc(sizeof(ZBufferPalette));
@@ -60,21 +61,15 @@ void ZB_generateCLUT(ZBuffer *zb, ZBufferRGB *colors)
 		zb->palette->colors[i] = colors[i];
 
 	/* generate lookup table */
-	for (r = 0; r < 32; r++)
+	for (val = 0; val < UINT16_MAX; val++)
 	{
-		for (g = 0; g < 64; g++)
-		{
-			for (b = 0; b < 32; b++)
-			{
-				ZBufferRGB color;
+		ZBufferRGB color;
 
-				color.r = r * 8;
-				color.g = g * 4;
-				color.b = b * 8;
+		color.r = RGB565_RED8(val);
+		color.g = RGB565_GRN8(val);
+		color.b = RGB565_BLU8(val);
 
-				zb->palette->clut[r][g][b] = ZB_paletteSearch(zb, color);
-			}
-		}
+		zb->palette->clut[val] = ZB_paletteSearch(zb, color);
 	}
 
 	/* set flag */
@@ -88,13 +83,7 @@ void ZB_ditherFrameBufferPalette(ZBuffer *zb, uint8_t *buf, int stride)
 
 	for (i = 0; i < zb->xsize * zb->ysize; i++)
 	{
-		int r, g, b;
-
-		r = RGB565_RED8(zb->pbuf[i]) / 32;
-		g = RGB565_BLU8(zb->pbuf[i]) / 64;
-		b = RGB565_GRN8(zb->pbuf[i]) / 32;
-
-		buf[i] = zb->palette->clut[r][g][b];
+		buf[i] = zb->palette->clut[zb->pbuf[i]];
 	}
 }
 

@@ -15,5 +15,5 @@ typedef struct
 typedef struct
 {
 	ZBufferRGB colors[256]; /* palette colors */
-	uint8_t clut[32][64][32]; /* color lookup table (RGB565 only) */
+	uint8_t clut[UINT16_MAX]; /* color lookup table (RGB565 only) */
 } ZBufferPalette;
