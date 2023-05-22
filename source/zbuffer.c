@@ -9,6 +9,9 @@
 #include <string.h>
 #include "zbuffer.h"
 
+/* REMOVEME */
+#include "thirdparty/quake_palette.h"
+
 ZBuffer *ZB_open(int xsize, int ysize, int mode,
 		 int nb_colors,
 		 unsigned char *color_indexes,
@@ -30,7 +33,15 @@ ZBuffer *ZB_open(int xsize, int ysize, int mode,
     switch (mode) {
 #ifdef TGL_FEATURE_8_BITS
     case ZB_MODE_INDEX:
-	ZB_initDither(zb, nb_colors, color_indexes, color_table);
+	/* REMOVEME */
+	if (nb_colors == 0)
+	{
+		ZB_generateCLUT(zb, &quake_palette);
+	}
+	else
+	{
+		ZB_initDither(zb, nb_colors, color_indexes, color_table);
+	}
 	break;
 #endif
 #ifdef TGL_FEATURE_32_BITS
@@ -80,7 +91,10 @@ void ZB_close(ZBuffer * zb)
 #endif
 
     if (zb->frame_buffer_allocated)
-	gl_free(zb->pbuf);
+		gl_free(zb->pbuf);
+
+	if (zb->use_palette)
+		gl_free(zb->palette);
 
     gl_free(zb->zbuf);
     gl_free(zb);
@@ -277,7 +291,10 @@ void ZB_copyFrameBuffer(ZBuffer * zb, void *buf,
     switch (zb->mode) {
 #ifdef TGL_FEATURE_8_BITS
     case ZB_MODE_INDEX:
-	ZB_ditherFrameBuffer(zb, buf, linesize >> 1);
+		if (zb->use_palette)
+			ZB_ditherFrameBufferPalette(zb, buf, linesize);
+		else
+			ZB_ditherFrameBuffer(zb, buf, linesize >> 1);
 	break;
 #endif
 #ifdef TGL_FEATURE_16_BITS

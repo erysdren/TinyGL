@@ -2,10 +2,11 @@
 # project
 cmake_minimum_required (VERSION 3.3)
 project(TinyGL LANGUAGES C)
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
+option(TINYGL_BUILD_TESTS "Build TinyGL Tests" ON)
 option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
 
 # compile options
@@ -33,6 +34,18 @@ file(GLOB TINYGL_SOURCES ${PROJECT_SOURCE_DIR}/source/*.c)
 # library
 add_library(TinyGL STATIC ${TINYGL_SOURCES})
 target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+# tests
+if(TINYGL_BUILD_TESTS)
+
+	link_libraries(TinyGL)
+
+	add_executable(zclut_test
+		${PROJECT_SOURCE_DIR}/tests/zclut_test.c
+		${PROJECT_SOURCE_DIR}/tests/gears.c
+	)
+
+endif()
 
 # examples
 if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM)
