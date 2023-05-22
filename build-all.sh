@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# clean slate
+source ./clean.sh
+
 # generic
 source ./build.sh
 cd ..
