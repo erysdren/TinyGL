@@ -65,4 +65,9 @@ if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM)
 		${PROJECT_SOURCE_DIR}/examples/ui.c
 	)
 
+	add_executable(cube
+		${PROJECT_SOURCE_DIR}/examples/cube.c
+		${PROJECT_SOURCE_DIR}/examples/ui.c
+	)
+
 endif()

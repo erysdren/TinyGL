@@ -211,11 +211,22 @@ glTexCoordPointer(GLint size, GLenum type, GLsizei stride,
  * erysdren
  */
 
-void glDrawElements(GLenum mode, GLsizei count, GLenum type,
-                       const GLvoid *indices)
+glopDrawElements(GLContext *c, GLParam *p)
 {
 	/* variables */
+	GLenum mode = p[1].i;
+	GLsizei count = p[2].i;
+	GLenum type = p[3].i;
+	GLvoid *indices = p[4].p;
 	int i;
+	GLParam param_ptr[2];
+	GLParam param_mode[2];
+
+	/* setup params */
+	param_ptr[0].op = OP_ArrayElement;
+
+	param_mode[0].op = OP_Begin;
+	param_mode[1].i = mode;
 
 	/* type */
 	switch (type)
@@ -223,36 +234,39 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type,
 		/* uint8 */
 		case GL_UNSIGNED_BYTE:
 		{
-			glBegin(mode);
+			glopBegin(c, param_mode);
 			for (i = 0; i < count; i++)
 			{
-				glArrayElement((GLint)((GLubyte *)indices)[i]);
+				param_ptr[1].i = (GLint)((GLubyte *)indices)[i];
+				glopArrayElement(c, param_ptr);
 			}
-			glEnd();
+			glopEnd(c, NULL);
 			break;
 		}
 
 		/* uint16 */
 		case GL_UNSIGNED_SHORT:
 		{
-			glBegin(mode);
+			glopBegin(c, param_mode);
 			for (i = 0; i < count; i++)
 			{
-				glArrayElement((GLint)((GLushort *)indices)[i]);
+				param_ptr[1].i = (GLint)((GLushort *)indices)[i];
+				glopArrayElement(c, param_ptr);
 			}
-			glEnd();
+			glopEnd(c, NULL);
 			break;
 		}
 
 		/* uint32 */
 		case GL_UNSIGNED_INT:
 		{
-			glBegin(mode);
+			glopBegin(c, param_mode);
 			for (i = 0; i < count; i++)
 			{
-				glArrayElement((GLint)((GLuint *)indices)[i]);
+				param_ptr[1].i = (GLint)((GLuint *)indices)[i];
+				glopArrayElement(c, param_ptr);
 			}
-			glEnd();
+			glopEnd(c, NULL);
 			break;
 		}
 
@@ -264,22 +278,53 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type,
 	}
 }
 
+void glDrawElements(GLenum mode, GLsizei count, GLenum type,
+				const GLvoid *indices)
+{
+	GLParam p[5];
+
+	p[0].op = OP_DrawElements;
+	p[1].i = mode;
+	p[2].i = count;
+	p[3].i = type;
+	p[4].p = indices;
+
+	gl_add_op(p);
+}
+
 /* probably a hack */
 /* mesa's version of this function is way more complex */
-void glDrawArrays(GLenum mode, GLint first, GLsizei count)
+void glopDrawArrays(GLContext *c, GLParam *p)
 {
 	/* variables */
 	int i;
+	GLenum mode = p[1].i;
+	GLint first = p[2].i;
+	GLsizei count = p[3].i;
+	GLParam param;
 
 	/* begin */
-	glBegin(mode);
+	glopBegin(c, &p[1]);
 
 	/* do elements */
 	for (i = 0; i < count; i++)
 	{
-		glArrayElement(first + i);
+		param.i = first + i;
+		glopArrayElement(c, &param);
 	}
 
 	/* end */
-	glEnd();
+	glopEnd(c, NULL);
+}
+
+void glDrawArrays(GLenum mode, GLint first, GLsizei count)
+{
+	GLParam p[4];
+
+	p[0].op = OP_DrawArrays;
+	p[1].i = mode;
+	p[2].i = first;
+	p[3].i = count;
+
+	gl_add_op(p);
 }
