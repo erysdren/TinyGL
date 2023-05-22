@@ -36,7 +36,7 @@ ZBuffer *ZB_open(int xsize, int ysize, int mode,
 	/* REMOVEME */
 	if (nb_colors < 0)
 	{
-		ZB_generateCLUT(zb, &quake_palette);
+		ZB_generateCLUT(zb, (ZBufferRGB *)&quake_palette);
 	}
 	else
 	{
