@@ -20,9 +20,12 @@ With the appropriate compilers installed, TinyGL can be built with:
 - GCC (DJGPP)
 - Open Watcom
 
+Each of these platforms are regularly compiled and tested for errors.
+
 ## Limitations
 
 - In the OSTinyGL module, only 16bpp is currently supported.
+- There is a list of not-yet-implemented OpenGL functions in [`include/GL/gl.h`](./include/GL/gl.h)
 
 ## Todo
 
