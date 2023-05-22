@@ -301,16 +301,22 @@ void glopDrawArrays(GLContext *c, GLParam *p)
 	GLenum mode = p[1].i;
 	GLint first = p[2].i;
 	GLsizei count = p[3].i;
-	GLParam param;
+	GLParam param_element[2];
+	GLParam param_begin[2];
+
+	param_begin[0].op = OP_Begin;
+	param_begin[1].i = mode;
+
+	param_element[0].op = OP_ArrayElement;
 
 	/* begin */
-	glopBegin(c, &p[1]);
+	glopBegin(c, param_begin);
 
 	/* do elements */
 	for (i = 0; i < count; i++)
 	{
-		param.i = first + i;
-		glopArrayElement(c, &param);
+		param_element[1].i = first + i;
+		glopArrayElement(c, param_element);
 	}
 
 	/* end */
