@@ -6,4 +6,5 @@ rm -rf cmake-build-haiku-i586
 rm -rf cmake-build-haiku-x86_64
 rm -rf cmake-build-mingw-i686
 rm -rf cmake-build-mingw-x86_64
+rm -rf cmake-build-riscv64-linux-gnu
 rm -rf cmake-build-watcom
