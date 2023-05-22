@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include <endian.h>
 #include "zbuffer.h"
 
 /* REMOVEME */
@@ -178,7 +179,7 @@ static void ZB_copyFrameBufferRGB32(ZBuffer * zb,
 	n = zb->xsize >> 2;
 	do {
 	    v = *(unsigned int *) q;
-#if BYTE_ORDER == BIG_ENDIAN
+#if __BYTE_ORDER == __BIG_ENDIAN
 	    RGB16_TO_RGB32(w1, w0, v);
 #else
 	    RGB16_TO_RGB32(w0, w1, v);
@@ -187,7 +188,7 @@ static void ZB_copyFrameBufferRGB32(ZBuffer * zb,
 	    p[1] = w1;
 
 	    v = *(unsigned int *) (q + 2);
-#if BYTE_ORDER == BIG_ENDIAN
+#if __BYTE_ORDER == __BIG_ENDIAN
 	    RGB16_TO_RGB32(w1, w0, v);
 #else
 	    RGB16_TO_RGB32(w0, w1, v);
@@ -214,7 +215,7 @@ static void ZB_copyFrameBufferRGB32(ZBuffer * zb,
 /* XXX: packed pixel 24 bit support not tested */
 /* XXX: big endian case not optimised */
 
-#if BYTE_ORDER == BIG_ENDIAN
+#if __BYTE_ORDER == __BIG_ENDIAN
 
 #define RGB16_TO_RGB24(p0,p1,p2,v1,v2)\
 {\
