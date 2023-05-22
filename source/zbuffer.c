@@ -34,7 +34,7 @@ ZBuffer *ZB_open(int xsize, int ysize, int mode,
 #ifdef TGL_FEATURE_8_BITS
     case ZB_MODE_INDEX:
 	/* REMOVEME */
-	if (nb_colors == 0)
+	if (nb_colors < 0)
 	{
 		ZB_generateCLUT(zb, &quake_palette);
 	}
