@@ -18,6 +18,7 @@ With the appropriate compilers installed, TinyGL can be built with:
 - GCC (MinGW)
 - GCC (Haiku OS)
 - GCC (DJGPP)
+- GCC (RISC-V)
 - Open Watcom
 
 Each of these platforms are regularly compiled and tested for errors.

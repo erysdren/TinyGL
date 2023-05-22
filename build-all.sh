@@ -30,3 +30,7 @@ cd ..
 # haiku x86_64
 source ./build-haiku-x86_64.sh
 cd ..
+
+# risv linux 64-bit
+source ./build-riscv64-linux-gnu.sh
+cd ..
