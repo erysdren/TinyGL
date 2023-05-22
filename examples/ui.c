@@ -74,8 +74,14 @@ int ui_loop(int argc, char **argv, const char *name)
 					{
 						case SDL_WINDOWEVENT_SIZE_CHANGED:
 						{
+							/* resize gl */
 							ostgl_resize(ctx, event.window.data1, event.window.data2);
 							reshape(event.window.data1, event.window.data2);
+
+							/* destroy texture and make new one */
+							SDL_DestroyTexture(texture);
+							texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565,
+								SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
 							break;
 						}
 					}
