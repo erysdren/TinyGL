@@ -211,7 +211,7 @@ glTexCoordPointer(GLint size, GLenum type, GLsizei stride,
  * erysdren
  */
 
-glopDrawElements(GLContext *c, GLParam *p)
+void glopDrawElements(GLContext *c, GLParam *p)
 {
 	/* variables */
 	GLenum mode = p[1].i;
