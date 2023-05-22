@@ -11,6 +11,7 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -105,7 +106,7 @@ void draw( void )
 {
    GLint i;
 
-   glClear( GL_COLOR_BUFFER_BIT );
+   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
    glColor3f(0, 1, 1); /* TK_SETCOLOR( Mode, TK_CYAN ); */
    glBegin( GL_LINES );
