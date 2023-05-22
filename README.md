@@ -14,6 +14,7 @@ See `examples/ui.c` for an example of implementing TinyGL under SDL2.
 
 With the appropriate compilers installed, TinyGL can be built with:
 
+- Clang (Linux)
 - GCC (Linux)
 - GCC (MinGW)
 - GCC (Haiku OS)
