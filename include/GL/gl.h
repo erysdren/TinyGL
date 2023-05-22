@@ -741,8 +741,11 @@ void glTranslatef(float x,float y,float z);
 void glScalef(float x,float y,float z);
 
 void glViewport(int x,int y,int width,int height);
-void glFrustum(double left,double right,double bottom,double top,
-				double near,double far);
+void glFrustum(double left, double right, double bottom, double top,
+				double nearv, double farv);
+
+void glOrtho(double left, double right, double bottom, double top,
+	double nearv, double farv);
 
 /* lists */
 unsigned int glGenLists(int range);
@@ -822,7 +825,6 @@ inline void glLineWidth(float) {}
 inline void glDepthFunc(int) {}
 inline void glBlendFunc(int, int) {}
 inline void glTexEnvf(int, int, int) {}
-inline void glOrtho(float,float,float,float,float,float){}
 inline void glVertex2i(int,int) {}
 inline void glDepthMask(int) {}
 inline void glFogi(int, int) {}

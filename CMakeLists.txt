@@ -60,4 +60,9 @@ if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM)
 		${PROJECT_SOURCE_DIR}/examples/ui.c
 	)
 
+	add_executable(bounce
+		${PROJECT_SOURCE_DIR}/examples/bounce.c
+		${PROJECT_SOURCE_DIR}/examples/ui.c
+	)
+
 endif()

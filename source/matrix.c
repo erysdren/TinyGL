@@ -238,4 +238,34 @@ void glopFrustum(GLContext *c,GLParam *p)
 
   gl_matrix_update(c);
 }
-  
+
+/* thanks mesa */
+void glopOrtho(GLContext *c, GLParam *p)
+{
+	float left = p[1].f;
+	float right = p[2].f;
+	float bottom = p[3].f;
+	float top = p[4].f;
+	float nearv = p[5].f;
+	float farv = p[6].f;
+	float x, y, z;
+	float tx, ty, tz;
+	float m[16];
+
+	x = 2.0 / (right-left);
+	y = 2.0 / (top-bottom);
+	z = -2.0 / (farv-nearv);
+	tx = -(right+left) / (right-left);
+	ty = -(top+bottom) / (top-bottom);
+	tz = -(farv+nearv) / (farv-nearv);
+
+	#define M(row,col)  m[col*4+row]
+		M(0,0) = x;     M(0,1) = 0.0F;  M(0,2) = 0.0F;  M(0,3) = tx;
+		M(1,0) = 0.0F;  M(1,1) = y;     M(1,2) = 0.0F;  M(1,3) = ty;
+		M(2,0) = 0.0F;  M(2,1) = 0.0F;  M(2,2) = z;     M(2,3) = tz;
+		M(3,0) = 0.0F;  M(3,1) = 0.0F;  M(3,2) = 0.0F;  M(3,3) = 1.0F;
+	#undef M
+
+	gl_M4_MulLeft(c->matrix_stack_ptr[c->matrix_mode], (M4 *)m);
+	gl_matrix_update(c);
+}
