@@ -2,11 +2,11 @@
 # project
 cmake_minimum_required (VERSION 3.3)
 project(TinyGL LANGUAGES C)
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
-option(TINYGL_BUILD_TESTS "Build TinyGL Tests" ON)
+option(TINYGL_BUILD_TESTS "Build TinyGL Tests" OFF)
 option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
 
 # compile options
@@ -26,6 +26,7 @@ endif()
 
 if(TINYGL_FIXED_POINT)
 	add_compile_definitions(-DTGL_FIXED=1)
+	message(WARNING "This doesn't do anything yet.")
 endif()
 
 # sources
