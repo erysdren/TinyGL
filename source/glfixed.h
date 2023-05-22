@@ -2,10 +2,13 @@
 #ifndef _tgl_fixed_h_
 #define _tgl_fixed_h_
 
-#include "fixed_point_math.h"
+#include "thirdparty/fixed_point_math.h"
 
 /* fixed point math */
 #ifdef TGL_FIXED
+
+/* include appropriate headers */
+#include <stdint.h>
 
 /* base type */
 typedef fix32_t real_t;
@@ -31,12 +34,18 @@ typedef fix32_t real_t;
 
 /* type conversion macros */
 #define REAL_TO_INT(a) FIX32_TO_INT(a)
+#define REAL_TO_SHORT(a) ((short)FIX32_TO_INT(a))
+#define REAL_TO_LONG(a) ((long)FIX32_TO_INT(a))
 #define REAL_TO_FIX16(a) ((fix16_t)(a))
 #define REAL_TO_FIX32(a) (a)
 #define REAL_TO_FLOAT(a) FIX32_TO_FLOAT(a)
 #define REAL_TO_DOUBLE(a) FIX32_TO_DOUBLE(a)
 
 #else
+
+/* include appropriate headers */
+#include <stdint.h>
+#include <float.h>
 
 /* base type */
 typedef float real_t;
@@ -47,7 +56,7 @@ typedef float real_t;
 #define REAL_MAX FLT_MIN
 
 /* one */
-#define REAL_ONE 1.0f
+#define REAL_ONE (1.0f)
 
 /* static initialization macros */
 #define REAL(a) ((real_t)(a))
@@ -62,6 +71,8 @@ typedef float real_t;
 
 /* type conversion macros */
 #define REAL_TO_INT(a) ((int)(a))
+#define REAL_TO_SHORT(a) ((short)(a))
+#define REAL_TO_LONG(a) ((long)(a))
 #define REAL_TO_FIX16(a) FIX16(a)
 #define REAL_TO_FIX32(a) FIX32(a)
 #define REAL_TO_FLOAT(a) (a)
