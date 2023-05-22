@@ -7,6 +7,10 @@ source ./clean.sh
 source ./build.sh
 cd ..
 
+# generic (clang)
+source ./build-clang.sh
+cd ..
+
 # djgpp
 source ./build-djgpp-i586.sh
 cd ..
