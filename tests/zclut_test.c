@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	pixels = (uint8_t *)malloc(WIDTH * HEIGHT);
 
 	/* open zb */
-	zb = ZB_open(WIDTH, HEIGHT, ZB_MODE_INDEX, 0, NULL, NULL, NULL);
+	zb = ZB_open(WIDTH, HEIGHT, ZB_MODE_INDEX, -1, NULL, NULL, NULL);
 	glInit((void *)zb);
 
 	/* gears */
