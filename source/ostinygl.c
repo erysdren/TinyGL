@@ -95,9 +95,13 @@ void ostgl_make_current(ostgl_context *context)
 /* delete zbuffers and free all memory */
 void ostgl_delete_context(ostgl_context *context)
 {
-	ZB_close((ZBuffer *)context->zb);
-	gl_free(context->pixels);
-	gl_free(context);
+	if (context)
+	{
+		if (context->zb) ZB_close((ZBuffer *)context->zb);
+		if (context->pixels) gl_free(context->pixels);
+
+		gl_free(context);
+	}
 
 	if (--num_contexts == 0)
 		glClose();
