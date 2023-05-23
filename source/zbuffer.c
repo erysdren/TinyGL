@@ -94,7 +94,7 @@ void ZB_close(ZBuffer * zb)
     if (zb->frame_buffer_allocated)
 		gl_free(zb->pbuf);
 
-	if (zb->use_palette)
+	if (zb->use_palette && zb->palette != NULL)
 		gl_free(zb->palette);
 
     gl_free(zb->zbuf);
