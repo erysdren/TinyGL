@@ -101,10 +101,10 @@ void ostgl_delete_context(ostgl_context *context)
 		if (context->pixels) gl_free(context->pixels);
 
 		gl_free(context);
-	}
 
-	if (--num_contexts == 0)
-		glClose();
+		if (--num_contexts == 0)
+			glClose();
+	}
 }
 
 /* resize all zbuffers in context */
