@@ -2,7 +2,7 @@
 # project
 cmake_minimum_required (VERSION 3.3)
 project(TinyGL LANGUAGES C)
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
@@ -14,6 +14,9 @@ if(NOT WATCOM)
 	add_compile_options(-pedantic -Wall -Wextra)
 	if(CMAKE_BUILD_TYPE STREQUAL "Release")
 		add_compile_options(-O3)
+	else()
+		add_compile_options(-g3 -fsanitize=address,undefined)
+		add_link_options(-fsanitize=address,undefined)
 	endif()
 	if(NOT WIN32 AND NOT DJGPP)
 		link_libraries(m)

@@ -10,9 +10,6 @@
 #include <endian.h>
 #include "zbuffer.h"
 
-/* REMOVEME */
-#include "thirdparty/quake_palette.h"
-
 ZBuffer *ZB_open(int xsize, int ysize, int mode,
 		 int nb_colors,
 		 unsigned char *color_indexes,
@@ -34,15 +31,7 @@ ZBuffer *ZB_open(int xsize, int ysize, int mode,
     switch (mode) {
 #ifdef TGL_FEATURE_8_BITS
     case ZB_MODE_INDEX:
-	/* REMOVEME */
-	if (nb_colors < 0)
-	{
-		ZB_generateCLUT(zb, (ZBufferRGB *)&quake_palette);
-	}
-	else
-	{
 		ZB_initDither(zb, nb_colors, color_indexes, color_table);
-	}
 	break;
 #endif
 #ifdef TGL_FEATURE_32_BITS
