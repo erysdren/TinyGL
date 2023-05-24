@@ -24,6 +24,10 @@ void endSharedState(GLContext *c)
   }
   gl_free(s->lists);
 
+  for(i=0;i<TEXTURE_HASH_TABLE_SIZE;i++) {
+    if (s->texture_hash_table[i] != NULL)
+	  gl_free(s->texture_hash_table[i]);
+  }
   gl_free(s->texture_hash_table);
 }
 
