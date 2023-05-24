@@ -7,8 +7,12 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include <endian.h>
 #include "zbuffer.h"
+
+/* if you're compiling this on a big-endian system, sorry */
+#define __BIG_ENDIAN 1234
+#define __LITTLE_ENDIAN 4321
+#define __BYTE_ORDER __LITTLE_ENDIAN
 
 ZBuffer *ZB_open(int xsize, int ysize, int mode,
 		 int nb_colors,
