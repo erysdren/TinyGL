@@ -7,7 +7,6 @@ set(CMAKE_BUILD_TYPE Release)
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
 option(TINYGL_BUILD_TESTS "Build TinyGL Tests" OFF)
-option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
 
 # compile options
 if(NOT WATCOM)
@@ -18,18 +17,19 @@ if(NOT WATCOM)
 		add_compile_options(-g3 -fsanitize=address,undefined)
 		add_link_options(-fsanitize=address,undefined)
 	endif()
-	if(NOT WIN32 AND NOT DJGPP)
-		link_libraries(m)
-	endif()
 else()
+	add_compile_options(-za99)
 	if(CMAKE_BUILD_TYPE STREQUAL "Release")
-		add_compile_options(-ox -d0 -za99)
+		add_compile_options(-ox -d0)
+	else()
+		add_compile_options(-d3)
 	endif()
 endif()
 
-if(TINYGL_FIXED_POINT)
-	add_compile_definitions(-DTGL_FIXED=1)
-	message(WARNING "This doesn't do anything yet.")
+# find math library
+find_library(MATH m)
+if(MATH)
+	link_libraries(${MATH})
 endif()
 
 # sources
