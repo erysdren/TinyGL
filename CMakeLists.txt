@@ -3,6 +3,8 @@
 cmake_minimum_required (VERSION 3.3)
 project(TinyGL LANGUAGES C)
 set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED TRUE)
 
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)

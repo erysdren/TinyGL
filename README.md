@@ -4,7 +4,7 @@
 
 An extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
 
-The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions.
+The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions. It will also strictly conform to the C99 standard.
 
 Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
