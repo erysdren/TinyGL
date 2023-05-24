@@ -45,7 +45,7 @@ Each of these platforms are regularly compiled and tested for errors.
 
 MIT License
 
-Copyright (c) 1997-2022 Fabrice Bellard
+Copyright (c) 1997-2022 Fabrice Bellard, erysdren (it/she/they)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
