@@ -1,6 +1,7 @@
 #!/bin/bash
 
-rm -rf cmake-build
+rm -rf cmake-build-generic
+rm -rf cmake-build-gcc
 rm -rf cmake-build-clang
 rm -rf cmake-build-djgpp-i586
 rm -rf cmake-build-haiku-i586
