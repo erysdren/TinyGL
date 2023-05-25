@@ -12,7 +12,7 @@ option(TINYGL_BUILD_TESTS "Build TinyGL Tests" OFF)
 
 # compile options
 if(NOT WATCOM)
-	add_compile_options(-pedantic -Wall -Wextra)
+	add_compile_options(-std=c99 -pedantic -Wall -Wextra)
 	if(CMAKE_BUILD_TYPE STREQUAL "Release")
 		add_compile_options(-O3)
 	else()
