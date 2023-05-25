@@ -9,6 +9,7 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
 option(TINYGL_BUILD_TESTS "Build TinyGL Tests" OFF)
+option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
 
 # compile options
 if(NOT WATCOM)
@@ -26,6 +27,11 @@ else()
 	else()
 		add_compile_options(-d3)
 	endif()
+endif()
+
+# fixed point
+if(TINYGL_FIXED_POINT)
+	add_compile_definitions(-DTGL_FIXED=1)
 endif()
 
 # find math library
