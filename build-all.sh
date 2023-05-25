@@ -27,8 +27,20 @@ cd ..
 source ./build-mingw-i686.sh
 cd ..
 
-# watcom
-source ./build-watcom.sh
+# watcom dos
+source ./build-watcom-dos.sh
+cd ..
+
+# watcom linux
+source ./build-watcom-linux.sh
+cd ..
+
+# watcom os/2
+source ./build-watcom-os2.sh
+cd ..
+
+# watcom windows
+source ./build-watcom-windows.sh
 cd ..
 
 # haiku i586
