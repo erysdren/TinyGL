@@ -4,10 +4,14 @@
 source ./clean.sh
 
 # generic
-source ./build.sh
+source ./build-generic.sh
 cd ..
 
-# generic (clang)
+# gcc
+source ./build-gcc.sh
+cd ..
+
+# clang
 source ./build-clang.sh
 cd ..
 
