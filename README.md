@@ -4,7 +4,9 @@
 
 An extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
 
-The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions. It will also strictly conform to the C99 standard.
+The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions.
+
+The minimum requirements to compile & run this code is ISO C99 compliance and a 32-bit processor respectively.
 
 Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
@@ -40,6 +42,7 @@ Each of these platforms are regularly compiled and tested for errors.
 - [ ] Implement areas of OpenGL 1.1 and 1.2 that are missing
 - [ ] Fixed-point math
 - [ ] Native 8bpp renderng with predefined palette
+- [ ] Clean up assumptions of little-endianness
 
 ## License
 
