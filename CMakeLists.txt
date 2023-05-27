@@ -76,7 +76,7 @@ endif()
 
 # examples
 find_package(SDL2)
-if(TINYGL_BUILD_EXAMPLES AND SDL2)
+if(TINYGL_BUILD_EXAMPLES AND SDL2_FOUND)
 
 	link_libraries(TinyGL SDL2::SDL2)
 
