@@ -10,6 +10,8 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
 option(TINYGL_BUILD_TESTS "Build TinyGL Tests" OFF)
 option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
+set(TINYGL_BPP 16 CACHE STRING "Native rendering bits-per-pixel")
+set_property(CACHE TINYGL_BPP PROPERTY STRINGS 8 15 16 24 32)
 
 # compile options
 if(NOT WATCOM)
@@ -32,6 +34,19 @@ endif()
 # fixed point
 if(TINYGL_FIXED_POINT)
 	add_compile_definitions(-DTGL_FIXED=1)
+endif()
+
+# native rendering bpp
+if(TINYGL_BPP STREQUAL 8)
+	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=8)
+elseif(TINYGL_BPP STREQUAL 15)
+	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=15)
+elseif(TINYGL_BPP STREQUAL 16)
+	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=16)
+elseif(TINYGL_BPP STREQUAL 24)
+	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=24)
+elseif(TINYGL_BPP STREQUAL 32)
+	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=32)
 endif()
 
 # find math library
