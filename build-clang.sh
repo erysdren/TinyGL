@@ -1,15 +1,23 @@
 #!/bin/bash
 
-if [ ! -d cmake-build-clang ]
+if ! [ -x "$(command -v clang)" ]
 then
-	mkdir cmake-build-clang
+	echo "clang not found"
+else
+
+	if [ ! -d cmake-build-clang ]
+	then
+		mkdir cmake-build-clang
+	fi
+
+	TEMP=${CC}
+	export CC=clang
+
+	cd cmake-build-clang
+	cmake .. 
+	make
+	cd ..
+
+	export CC=${TEMP}
+
 fi
-
-TEMP=${CC}
-export CC=clang
-
-cd cmake-build-clang
-cmake .. 
-make
-
-export CC=${TEMP}

@@ -1,15 +1,23 @@
 #!/bin/bash
 
-if [ ! -d cmake-build-gcc ]
+if ! [ -x "$(command -v gcc)" ]
 then
-	mkdir cmake-build-gcc
+	echo "gcc not found"
+else
+
+	if [ ! -d cmake-build-gcc ]
+	then
+		mkdir cmake-build-gcc
+	fi
+
+	TEMP=${CC}
+	export CC=gcc
+
+	cd cmake-build-gcc
+	cmake .. 
+	make
+	cd ..
+
+	export CC=${TEMP}
+
 fi
-
-TEMP=${CC}
-export CC=gcc
-
-cd cmake-build-gcc
-cmake .. 
-make
-
-export CC=${TEMP}

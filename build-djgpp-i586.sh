@@ -1,10 +1,18 @@
 #!/bin/bash
 
-if [ ! -d cmake-build-djgpp-i586 ]
+if ! [ -x "$(command -v i586-pc-msdosdjgpp-gcc)" ]
 then
-	mkdir cmake-build-djgpp-i586
-fi
+	echo "djgpp not found"
+else
 
-cd cmake-build-djgpp-i586
-cmake -D CMAKE_TOOLCHAIN_FILE=cmake/djgpp-i586.cmake ..
-make
+	if [ ! -d cmake-build-djgpp-i586 ]
+	then
+		mkdir cmake-build-djgpp-i586
+	fi
+
+	cd cmake-build-djgpp-i586
+	cmake -D CMAKE_TOOLCHAIN_FILE=cmake/djgpp-i586.cmake ..
+	make
+	cd ..
+
+fi

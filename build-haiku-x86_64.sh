@@ -1,10 +1,18 @@
 #!/bin/bash
 
-if [ ! -d cmake-build-haiku-x86_64 ]
+if ! [ -x "$(command -v x86_64-unknown-haiku-gcc)" ]
 then
-	mkdir cmake-build-haiku-x86_64
-fi
+	echo "haiku x86_64 cross-compiler not found"
+else
 
-cd cmake-build-haiku-x86_64
-cmake -D CMAKE_TOOLCHAIN_FILE=cmake/haiku-x86_64.cmake ..
-make
+	if [ ! -d cmake-build-haiku-x86_64 ]
+	then
+		mkdir cmake-build-haiku-x86_64
+	fi
+
+	cd cmake-build-haiku-x86_64
+	cmake -D CMAKE_TOOLCHAIN_FILE=cmake/haiku-x86_64.cmake ..
+	make
+	cd ..
+
+fi

@@ -8,3 +8,4 @@ fi
 cd cmake-build-generic
 cmake ..
 make
+cd ..

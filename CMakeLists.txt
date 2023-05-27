@@ -75,9 +75,9 @@ if(TINYGL_BUILD_TESTS)
 endif()
 
 # examples
-if(TINYGL_BUILD_EXAMPLES AND NOT DJGPP AND NOT WATCOM AND NOT RISCV)
+find_package(SDL2)
+if(TINYGL_BUILD_EXAMPLES AND SDL2)
 
-	find_package(SDL2 REQUIRED)
 	link_libraries(TinyGL SDL2::SDL2)
 
 	add_executable(gears

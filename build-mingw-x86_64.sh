@@ -1,10 +1,18 @@
 #!/bin/bash
 
-if [ ! -d cmake-build-mingw-x86_64 ]
+if ! [ -x "$(command -v x86_64-w64-mingw32-gcc)" ]
 then
-	mkdir cmake-build-mingw-x86_64
-fi
+	echo "mingw x86_64 cross-compiler not found"
+else
 
-cd cmake-build-mingw-x86_64
-cmake -D CMAKE_TOOLCHAIN_FILE=cmake/mingw-x86_64.cmake ..
-make
+	if [ ! -d cmake-build-mingw-x86_64 ]
+	then
+		mkdir cmake-build-mingw-x86_64
+	fi
+
+	cd cmake-build-mingw-x86_64
+	cmake -D CMAKE_TOOLCHAIN_FILE=cmake/mingw-x86_64.cmake ..
+	make
+	cd ..
+
+fi
