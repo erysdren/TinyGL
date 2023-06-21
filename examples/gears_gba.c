@@ -252,7 +252,7 @@ void init( void )
 int main(void) 
 {
 	/* ostgl */
-	ostgl_context *context = ostgl_create_context(240, 160, 16);
+	ostgl_context_t *context = ostgl_create_context(240, 160, 16);
 	ostgl_make_current(context);
 
 	/* gears */

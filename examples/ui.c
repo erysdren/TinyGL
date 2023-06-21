@@ -16,7 +16,7 @@
 #define BPP 16
 
 /* globals */
-ostgl_context *ctx;
+ostgl_context_t *ctx;
 int running;
 SDL_Window *window;
 SDL_Renderer *renderer;
