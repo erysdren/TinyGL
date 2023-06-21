@@ -1,7 +1,7 @@
 
 # project
-cmake_minimum_required (VERSION 3.3)
-project(TinyGL LANGUAGES C)
+cmake_minimum_required(VERSION 3.3)
+project(TinyGL DESCRIPTION "Software-rendered OpenGL" HOMEPAGE_URL https://github.com/erysdren/TinyGL LANGUAGES C VERSION 0.4.1)
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED TRUE)
@@ -58,9 +58,20 @@ endif()
 # sources
 file(GLOB TINYGL_SOURCES ${PROJECT_SOURCE_DIR}/source/*.c)
 
+# headers
+file(GLOB TINYGL_HEADERS ${PROJECT_SOURCE_DIR}/include/GL/*.h)
+
 # library
 add_library(TinyGL STATIC ${TINYGL_SOURCES})
 target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+# pkg-config
+configure_file(${PROJECT_SOURCE_DIR}/cmake/TinyGL.pc.in ${PROJECT_BINARY_DIR}/TinyGL.pc @ONLY) 
+
+# install
+install(TARGETS TinyGL DESTINATION ${CMAKE_INSTALL_PREFIX}/TinyGL/lib)
+install(FILES ${TINYGL_HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/TinyGL/include/GL)
+install(FILES ${PROJECT_BINARY_DIR}/TinyGL.pc DESTINATION lib/pkgconfig)
 
 # tests
 if(TINYGL_BUILD_TESTS)
