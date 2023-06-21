@@ -10,10 +10,10 @@
 static int num_contexts = 0;
 
 /* create offscreen tinygl context with provided dimensions and depth */
-ostgl_context *ostgl_create_context(int width, int height, int depth)
+ostgl_context_t *ostgl_create_context(int width, int height, int depth)
 {
 	/* variables */
-	ostgl_context *context;
+	ostgl_context_t *context;
 	int i;
 	unsigned char color_indices[NUM_COLORS];
 	int color_table[NUM_COLORS];
@@ -23,7 +23,7 @@ ostgl_context *ostgl_create_context(int width, int height, int depth)
 	assert(depth == 8 || depth == 16 || depth == 24 || depth == 32);
 
 	/* allocate context */
-	context = gl_malloc(sizeof(ostgl_context));
+	context = gl_malloc(sizeof(ostgl_context_t));
 	assert(context != NULL);
 
 	/* allocate pixels */
@@ -85,7 +85,7 @@ ostgl_context *ostgl_create_context(int width, int height, int depth)
 }
 
 /* make current */
-void ostgl_make_current(ostgl_context *context)
+void ostgl_make_current(ostgl_context_t *context)
 {
 	GLContext *glcontext = gl_get_context();
 	assert(glcontext != NULL);
@@ -93,7 +93,7 @@ void ostgl_make_current(ostgl_context *context)
 }
 
 /* delete zbuffers and free all memory */
-void ostgl_delete_context(ostgl_context *context)
+void ostgl_delete_context(ostgl_context_t *context)
 {
 	if (context)
 	{
@@ -108,7 +108,7 @@ void ostgl_delete_context(ostgl_context *context)
 }
 
 /* resize all zbuffers in context */
-void ostgl_resize(ostgl_context *context, int width, int height)
+void ostgl_resize(ostgl_context_t *context, int width, int height)
 {
 	assert(width && height);
 
@@ -123,7 +123,7 @@ void ostgl_resize(ostgl_context *context, int width, int height)
 }
 
 /* prepare frame buffer (if depth != 16) */
-void *ostgl_convert_framebuffer(ostgl_context *context)
+void *ostgl_convert_framebuffer(ostgl_context_t *context)
 {
 	if (context->depth == 16)
 		return context->pixels;

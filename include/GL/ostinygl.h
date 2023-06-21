@@ -14,25 +14,25 @@ typedef struct
 	void *palette;		/* 256x3 bytes of color data if depth == 8*/
 	int width, height;	/* width, height */
 	int depth;			/* bpp */
-} ostgl_context;
+} ostgl_context_t;
 
 /* functions */
 
 /* create context. valid bits per pixel are 8, 16, 24, and 32. */
-ostgl_context *ostgl_create_context(int width, int height, int depth);
+ostgl_context_t *ostgl_create_context(int width, int height, int depth);
 
 /* if you have multiple contexts, call this to make one "current" */
-void ostgl_make_current(ostgl_context *context);
+void ostgl_make_current(ostgl_context_t *context);
 
 /* delete context and free all associated memory */
-void ostgl_delete_context(ostgl_context *context);
+void ostgl_delete_context(ostgl_context_t *context);
 
 /* resize framebuffer to specified with and height */
-void ostgl_resize(ostgl_context *context, int width, int height);
+void ostgl_resize(ostgl_context_t *context, int width, int height);
 
 /* convert framebuffer to specified bpp */
 /* you only need to call this function if your target bits-per-pixel != 16. */
-void *ostgl_convert_framebuffer(ostgl_context *context);
+void *ostgl_convert_framebuffer(ostgl_context_t *context);
 
 /* guard */
 #ifdef __cplusplus
