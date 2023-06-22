@@ -8,8 +8,7 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 
 # options
 option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
-option(TINYGL_BUILD_TESTS "Build TinyGL Tests" OFF)
-option(TINYGL_FIXED_POINT "Use Fixed-Point Math" OFF)
+option(TINYGL_BUILD_SHARED "Build TinyGL Shared Library" OFF)
 set(TINYGL_BPP 16 CACHE STRING "Native rendering bits-per-pixel")
 set_property(CACHE TINYGL_BPP PROPERTY STRINGS 8 15 16 24 32)
 
@@ -31,11 +30,6 @@ else()
 	endif()
 endif()
 
-# fixed point
-if(TINYGL_FIXED_POINT)
-	add_compile_definitions(-DTGL_FIXED=1)
-endif()
-
 # native rendering bpp
 add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=${TINYGL_BPP})
 
@@ -52,7 +46,11 @@ file(GLOB TINYGL_SOURCES ${PROJECT_SOURCE_DIR}/source/*.c)
 file(GLOB TINYGL_HEADERS ${PROJECT_SOURCE_DIR}/include/GL/*.h)
 
 # library
+if(TINYGL_BUILD_SHARED)
 add_library(TinyGL STATIC ${TINYGL_SOURCES})
+else()
+add_library(TinyGL SHARED ${TINYGL_SOURCES})
+endif()
 target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # pkg-config
@@ -62,18 +60,6 @@ configure_file(${PROJECT_SOURCE_DIR}/cmake/TinyGL.pc.in ${PROJECT_BINARY_DIR}/Ti
 install(TARGETS TinyGL DESTINATION ${CMAKE_INSTALL_PREFIX}/TinyGL/lib)
 install(FILES ${TINYGL_HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/TinyGL/include/GL)
 install(FILES ${PROJECT_BINARY_DIR}/TinyGL.pc DESTINATION lib/pkgconfig)
-
-# tests
-if(TINYGL_BUILD_TESTS)
-
-	link_libraries(TinyGL)
-
-	add_executable(zclut_test
-		${PROJECT_SOURCE_DIR}/tests/zclut_test.c
-		${PROJECT_SOURCE_DIR}/tests/gears.c
-	)
-
-endif()
 
 # examples
 find_package(SDL2)
