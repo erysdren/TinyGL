@@ -282,10 +282,7 @@ void ZB_copyFrameBuffer(ZBuffer * zb, void *buf,
     switch (zb->mode) {
 #ifdef TGL_FEATURE_8_BITS
     case ZB_MODE_INDEX:
-		if (zb->use_palette)
-			ZB_ditherFrameBufferPalette(zb, buf, linesize);
-		else
-			ZB_ditherFrameBuffer(zb, buf, linesize >> 1);
+		ZB_ditherFrameBuffer(zb, buf, linesize);
 	break;
 #endif
 #ifdef TGL_FEATURE_16_BITS

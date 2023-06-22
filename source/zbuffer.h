@@ -6,7 +6,6 @@
  */
 
 #include "zfeatures.h"
-#include "zclut.h"
 
 #define ZB_Z_BITS 16
 
@@ -86,9 +85,6 @@ typedef struct {
     int *ctable;
     PIXEL *current_texture;
 
-	int use_palette;
-	ZBufferPalette *palette;
-
 } ZBuffer;
 
 typedef struct {
@@ -115,11 +111,6 @@ void ZB_clear(ZBuffer *zb,int clear_z,int z,
 	      int clear_color,int r,int g,int b);
 /* linesize is in BYTES */
 void ZB_copyFrameBuffer(ZBuffer *zb,void *buf,int linesize);
-
-/* zclut.c */
-
-void ZB_generateCLUT(ZBuffer *zb, ZBufferRGB *palette);
-void ZB_ditherFrameBufferPalette(ZBuffer *zb, uint8_t *buf, int stride);
 
 /* zdither.c */
 
