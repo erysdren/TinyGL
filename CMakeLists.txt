@@ -37,17 +37,7 @@ if(TINYGL_FIXED_POINT)
 endif()
 
 # native rendering bpp
-if(TINYGL_BPP STREQUAL 8)
-	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=8)
-elseif(TINYGL_BPP STREQUAL 15)
-	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=15)
-elseif(TINYGL_BPP STREQUAL 16)
-	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=16)
-elseif(TINYGL_BPP STREQUAL 24)
-	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=24)
-elseif(TINYGL_BPP STREQUAL 32)
-	add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=32)
-endif()
+add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=${TINYGL_BPP})
 
 # find math library
 find_library(MATH m)
