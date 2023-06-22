@@ -132,7 +132,7 @@ int ui_loop(int argc, char **argv, const char *name)
 }
 
 /* swap buffers */
-void swap_buffers()
+void swap_buffers(void)
 {
 	SDL_UpdateTexture(texture, NULL, ctx->pixels, ctx->width * (ctx->depth / 8));
 	SDL_RenderClear(renderer);

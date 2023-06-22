@@ -1,14 +1,14 @@
 
 /* program-defined */
-void draw();
-void idle();
+void draw(void);
+void idle(void);
 GLenum key(int k, GLenum mask);
 void reshape(int width, int height);
-void init();
+void init(void);
 
 /* open window, swap buffer */
 int ui_loop(int argc, char **argv, const char *name);
-void swap_buffers();
+void swap_buffers(void);
 
 #define KEY_UP 0xe000
 #define KEY_DOWN 0xe001
