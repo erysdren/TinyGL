@@ -169,7 +169,7 @@ void idle( void )
 }
 
 
-void init()
+void init(void)
 {
 	Ball = make_ball();
 	glCullFace( GL_BACK );
