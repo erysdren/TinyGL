@@ -9,11 +9,11 @@ extern "C" {
 /* struct type */
 typedef struct
 {
-	void *zb;			/* private ZBuffer struct */
-	void *pixels;		/* read-write pixel buffer */
-	void *palette;		/* 256x3 bytes of color data if depth == 8*/
-	int width, height;	/* width, height */
-	int depth;			/* bpp */
+	void *zb;					/* private ZBuffer struct */
+	void *pixels;				/* read-write pixel buffer */
+	unsigned char *palette;		/* 768 bytes of RGB color data if depth == 8 */
+	int width, height;			/* width, height */
+	int depth;					/* bpp */
 } ostgl_context_t;
 
 /* functions */

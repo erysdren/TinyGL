@@ -7,6 +7,10 @@
 
 #define NUM_COLORS 256
 
+#define RED(c) ((unsigned char)(((c) >> 16) & 0xFF))
+#define GRN(c) ((unsigned char)(((c) >> 8) & 0xFF))
+#define BLU(c) ((unsigned char)((c) & 0xFF))
+
 static int num_contexts = 0;
 
 /* create offscreen tinygl context with provided dimensions and depth */
@@ -40,7 +44,19 @@ ostgl_context_t *ostgl_create_context(int width, int height, int depth)
 		{
 			for (i = 0; i < NUM_COLORS; i++) color_indices[i] = i;
 			context->zb = (void *)ZB_open(width, height, ZB_MODE_INDEX, NUM_COLORS, color_indices, color_table, NULL);
+			/*
 			context->palette = (void *)((ZBuffer *)context->zb)->ctable;
+			for (i = 0; i < NUM_COLORS; i++) printf("0x%08x ", ((ZBuffer *)context->zb)->ctable[i]);
+			printf("\n");
+			*/
+			context->palette = gl_malloc(NUM_COLORS * 3);
+			for (i = 0; i < NUM_COLORS; i++)
+			{
+				context->palette[i * 3] = RED(((ZBuffer *)context->zb)->ctable[i]);
+				context->palette[(i * 3) + 1] = GRN(((ZBuffer *)context->zb)->ctable[i]);
+				context->palette[(i * 3) + 2] = BLU(((ZBuffer *)context->zb)->ctable[i]);
+				/* printf("%u %u %u\n", context->palette[i * 3], context->palette[(i * 3) + 1], context->palette[(i * 3) + 2]); */
+			}
 			break;
 		}
 
@@ -99,6 +115,7 @@ void ostgl_delete_context(ostgl_context_t *context)
 	{
 		if (context->zb) ZB_close((ZBuffer *)context->zb);
 		if (context->pixels) gl_free(context->pixels);
+		if (context->palette) gl_free(context->palette);
 
 		gl_free(context);
 
