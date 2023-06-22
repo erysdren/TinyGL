@@ -27,7 +27,7 @@ The original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
 ## Platforms
 
-TinyGL is compatible with Clang, GCC, and Open Watcom. Tested platforms:
+TinyGL is compatible with Clang, GCC, TinyCC, and Open Watcom. Tested platforms:
 
 - Linux
 - Windows

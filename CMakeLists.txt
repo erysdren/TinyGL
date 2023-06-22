@@ -30,6 +30,11 @@ else()
 	endif()
 endif()
 
+# tinycc
+if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
+	add_compile_definitions(-DSDL_DISABLE_IMMINTRIN_H=1)
+endif()
+
 # native rendering bpp
 add_compile_definitions(-DTGL_FEATURE_RENDER_BITS=${TINYGL_BPP})
 
