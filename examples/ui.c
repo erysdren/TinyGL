@@ -25,15 +25,30 @@ SDL_Texture *texture;
 /* open window, handle inputs */
 int ui_loop(int argc, char **argv, const char *name)
 {
+	/* variables */
+	int w, h;
+
 	/* suppress warnings */
 	(void)argc;
 	(void)argv;
+
+	/* get width, height from commandline */
+	if (argc >= 3)
+	{
+		if (!(w = atoi(argv[1]))) w = WIDTH;
+		if (!(h = atoi(argv[2]))) h = HEIGHT;
+	}
+	else
+	{
+		w = WIDTH;
+		h = HEIGHT;
+	}
 
 	/* init sdl */
 	SDL_Init(SDL_INIT_VIDEO);
 
 	/* alloc */
-	ctx = ostgl_create_context(WIDTH, HEIGHT, BPP);
+	ctx = ostgl_create_context(w, h, BPP);
 	ostgl_make_current(ctx);
 
 	/* call user functions */
