@@ -1,7 +1,7 @@
 
 # project
 cmake_minimum_required(VERSION 3.3)
-project(TinyGL DESCRIPTION "Software-rendered OpenGL" HOMEPAGE_URL https://github.com/erysdren/TinyGL LANGUAGES C VERSION 0.4.1)
+project(TinyGL DESCRIPTION "Software-rendered OpenGL" HOMEPAGE_URL https://github.com/erysdren/TinyGL LANGUAGES C VERSION 0.4.2)
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED TRUE)
