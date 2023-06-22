@@ -287,7 +287,7 @@ void glDrawElements(GLenum mode, GLsizei count, GLenum type,
 	p[1].i = mode;
 	p[2].i = count;
 	p[3].i = type;
-	p[4].p = indices;
+	p[4].p = (void *)indices;
 
 	gl_add_op(p);
 }

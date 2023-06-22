@@ -10,9 +10,15 @@
 #include "zbuffer.h"
 
 /* if you're compiling this on a big-endian system, sorry */
+#ifndef __BIG_ENDIAN
 #define __BIG_ENDIAN 1234
+#endif
+#ifndef __LITTLE_ENDIAN
 #define __LITTLE_ENDIAN 4321
+#endif
+#ifndef __BYTE_ORDER
 #define __BYTE_ORDER __LITTLE_ENDIAN
+#endif
 
 ZBuffer *ZB_open(int xsize, int ysize, int mode,
 		 int nb_colors,
