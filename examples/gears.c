@@ -284,14 +284,6 @@ void init( void )
 
 int main(int argc, char **argv) 
 {
-   if (argc>1) {
-      /* do 'n' frames then exit */
-      limit = atoi( argv[1] ) + 1;
-   }
-   else {
-      limit = 0;
-   }
-
    return ui_loop(argc, argv, "gears");
 }
 
