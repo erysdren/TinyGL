@@ -1382,7 +1382,7 @@ animation(void)
 
 #endif
 
-GLenum key(int key, GLenum mask)
+GLenum key(int key)
 {
 
   int i = 0;

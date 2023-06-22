@@ -92,7 +92,7 @@ void reshape( int width, int height )
 }
 
 
-GLenum key(int k, GLenum mask)
+GLenum key(int k)
 {
    switch (k) {
       case KEY_ESCAPE:

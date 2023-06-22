@@ -49,7 +49,7 @@ void idle(void)
 	draw();
 }
 
-GLenum key(int k, GLenum mask)
+GLenum key(int k)
 {
 	switch (k)
 	{

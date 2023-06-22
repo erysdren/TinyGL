@@ -2,7 +2,7 @@
 /* program-defined */
 void draw(void);
 void idle(void);
-GLenum key(int k, GLenum mask);
+GLenum key(int k);
 void reshape(int width, int height);
 void init(void);
 
