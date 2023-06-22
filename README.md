@@ -2,47 +2,25 @@
 
 ![a 3D render of multiple gears floating in empty space, one red, one blue, and one green.](.github/tgl_gears.png)
 
-An extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
+This is an extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
 
-The goal is to bring TinyGL up to full OpenGL 1.1 compatibility, along with a suite of GLU (and maybe GLUT) functions.
+TinyGL is an implementation of the OpenGL 1.2 specification in pure software, using no hardware acceleration. It is designed to be lightweight and fast, using highly optimized rasterization routines originally written by [Fabrice Bellard](https://bellard.org).
 
 The minimum requirements to compile & run this code is ISO C99 compliance and a 32-bit processor respectively.
 
-Original versions (in `.tar.gz` format) can be found in the "legacy" folder.
+The original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
-See `examples/ui.c` for an example of implementing TinyGL under SDL2.
+See [`examples/ui.c`](./examples/ui.c) for an example of implementing TinyGL under SDL2.
 
 ## Platforms
 
-With the appropriate compilers installed, TinyGL can be built with:
+TinyGL is compatible with Clang, GCC, and Open Watcom. Tested platforms:
 
-- Clang (Linux)
-- GCC (Linux)
-- GCC (MinGW)
-- GCC (Haiku OS)
-- GCC (DJGPP)
-- GCC (RISC-V)
-- Open Watcom
-
-Each of these platforms are regularly compiled and tested for errors.
-
-## Limitations
-
-- In the OSTinyGL module, only 16bpp is currently supported.
-- There is a list of not-yet-implemented OpenGL functions in [`include/GL/gl.h`](./include/GL/gl.h)
-
-## Todo
-
-- [x] Port examples to platform-agnostic window system
-- [x] Remove BeOS code
-- [x] Remove GLX & NGLX
-- [ ] Fix memory leaks in original code
-- [ ] Clean up syntax where necessary
-- [ ] Implement more GLU functions
-- [ ] Implement areas of OpenGL 1.1 and 1.2 that are missing
-- [ ] Fixed-point math
-- [ ] Native 8bpp renderng with predefined palette
-- [ ] Clean up assumptions of little-endianness
+- Linux
+- Windows
+- Haiku
+- MS-DOS
+- OS/2
 
 ## License
 
