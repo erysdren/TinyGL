@@ -12,6 +12,16 @@ The original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
 See [`examples/ui.c`](./examples/ui.c) for an example of implementing TinyGL under SDL2.
 
+## Examples
+
+- [`bounce.c`](./examples/bounce.c) - Bouncing ball demo by Brian Paul
+- [`cube.c`](./examples/cube.c) - glDrawElements example by erysdren
+- [`gears.c`](./examples/gears.c) - Gears demo by Brian Paul
+- [`mech.c`](./examples/mech.c) - glutmech by Simon Parkinson-Bates
+- [`spin.c`](./examples/spin.c) - Spinning box demo by Brian Paul
+- [`texobj.c`](./examples/texobj.c) - Textured object demo by Brian Paul
+- [`ui.c`](./examples/ui.c) - TinyGL under SDL2 example
+
 ## Platforms
 
 TinyGL is compatible with Clang, GCC, and Open Watcom. Tested platforms:
