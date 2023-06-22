@@ -10,8 +10,6 @@ The minimum requirements to compile & run this code is ISO C99 compliance and a 
 
 The original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 
-See [`examples/ui.c`](./examples/ui.c) for an example of implementing TinyGL under SDL2.
-
 ## Examples
 
 - [`bounce.c`](./examples/bounce.c) - Bouncing ball demo by Brian Paul
