@@ -37,6 +37,7 @@ TinyGL is compatible with Clang, GCC, and Open Watcom. Tested platforms:
 MIT License
 
 Copyright (c) 1997-2022 Fabrice Bellard
+
 Copyright (c) 2023 erysdren (it/she/they)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
