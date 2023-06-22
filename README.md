@@ -18,7 +18,12 @@ The original versions (in `.tar.gz` format) can be found in the "legacy" folder.
 - [`mech.c`](./examples/mech.c) - glutmech by Simon Parkinson-Bates
 - [`spin.c`](./examples/spin.c) - Spinning box demo by Brian Paul
 - [`texobj.c`](./examples/texobj.c) - Textured object demo by Brian Paul
+- [`ui_headless.c`](./examples/ui_headless.c) - Render TinyGL frame to image file
 - [`ui.c`](./examples/ui.c) - TinyGL under SDL2 example
+
+## Thirdparty
+
+- [`stb_image_write.h`](https://github.com/nothings/stb/)
 
 ## Platforms
 

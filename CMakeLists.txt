@@ -61,11 +61,48 @@ install(TARGETS TinyGL DESTINATION ${CMAKE_INSTALL_PREFIX}/TinyGL/lib)
 install(FILES ${TINYGL_HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/TinyGL/include/GL)
 install(FILES ${PROJECT_BINARY_DIR}/TinyGL.pc DESTINATION lib/pkgconfig)
 
-# examples
+link_libraries(TinyGL)
+
+# headless examples
+if(TINYGL_BUILD_EXAMPLES)
+
+	add_executable(gears_headless
+		${PROJECT_SOURCE_DIR}/examples/gears.c
+		${PROJECT_SOURCE_DIR}/examples/ui_headless.c
+	)
+
+	add_executable(mech_headless
+		${PROJECT_SOURCE_DIR}/examples/mech.c
+		${PROJECT_SOURCE_DIR}/examples/ui_headless.c
+	)
+
+	add_executable(spin_headless
+		${PROJECT_SOURCE_DIR}/examples/spin.c
+		${PROJECT_SOURCE_DIR}/examples/ui_headless.c
+	)
+
+	add_executable(texobj_headless
+		${PROJECT_SOURCE_DIR}/examples/texobj.c
+		${PROJECT_SOURCE_DIR}/examples/ui_headless.c
+	)
+
+	add_executable(bounce_headless
+		${PROJECT_SOURCE_DIR}/examples/bounce.c
+		${PROJECT_SOURCE_DIR}/examples/ui_headless.c
+	)
+
+	add_executable(cube_headless
+		${PROJECT_SOURCE_DIR}/examples/cube.c
+		${PROJECT_SOURCE_DIR}/examples/ui_headless.c
+	)
+
+endif()
+
+# sdl2 examples
 find_package(SDL2)
 if(TINYGL_BUILD_EXAMPLES AND SDL2_FOUND)
 
-	link_libraries(TinyGL SDL2::SDL2)
+	link_libraries(SDL2::SDL2)
 
 	add_executable(gears
 		${PROJECT_SOURCE_DIR}/examples/gears.c
