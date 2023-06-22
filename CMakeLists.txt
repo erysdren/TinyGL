@@ -47,9 +47,9 @@ file(GLOB TINYGL_HEADERS ${PROJECT_SOURCE_DIR}/include/GL/*.h)
 
 # library
 if(TINYGL_BUILD_SHARED)
-add_library(TinyGL STATIC ${TINYGL_SOURCES})
+	add_library(TinyGL SHARED ${TINYGL_SOURCES})
 else()
-add_library(TinyGL SHARED ${TINYGL_SOURCES})
+	add_library(TinyGL STATIC ${TINYGL_SOURCES})
 endif()
 target_include_directories(TinyGL PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
