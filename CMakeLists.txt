@@ -69,7 +69,7 @@ install(FILES ${PROJECT_BINARY_DIR}/TinyGL.pc DESTINATION lib/pkgconfig)
 link_libraries(TinyGL)
 
 # headless examples
-if(TINYGL_BUILD_EXAMPLES)
+if(TINYGL_BUILD_EXAMPLES AND NOT WATCOM)
 
 	add_executable(gears_headless
 		${PROJECT_SOURCE_DIR}/examples/gears.c
