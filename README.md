@@ -8,7 +8,7 @@ TinyGL is an implementation of the OpenGL 1.2 specification in pure software, us
 
 The minimum requirements to compile & run this code is ISO C99 compliance and a 32-bit processor respectively.
 
-The original versions (in `.tar.gz` format) can be found in the "legacy" folder.
+The original versions (in `.tar.gz` format) can be found in the "contrib" folder.
 
 ## Examples
 
