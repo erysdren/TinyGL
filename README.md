@@ -8,6 +8,8 @@ TinyGL is an implementation of the OpenGL 1.2 specification in pure software, us
 
 The minimum requirements to compile & run this code is ISO C99 compliance and a 32-bit processor respectively.
 
+TinyGL can also be installed as a system-wide library and then accessed with `pkg-config`.
+
 The original versions (in `.tar.gz` format) can be found in the "contrib" folder.
 
 ## Examples
@@ -18,8 +20,8 @@ The original versions (in `.tar.gz` format) can be found in the "contrib" folder
 - [`mech.c`](./examples/mech.c) - glutmech by Simon Parkinson-Bates
 - [`spin.c`](./examples/spin.c) - Spinning box demo by Brian Paul
 - [`texobj.c`](./examples/texobj.c) - Textured object demo by Brian Paul
-- [`ui_headless.c`](./examples/ui_headless.c) - Render TinyGL frame to image file
-- [`ui.c`](./examples/ui.c) - TinyGL under SDL2 example
+- [`ui_headless.c`](./examples/ui_headless.c) - TinyGL with stb_image_write by erysdren
+- [`ui.c`](./examples/ui.c) - TinyGL with SDL2 by erysdren
 
 ## Thirdparty
 
@@ -27,13 +29,24 @@ The original versions (in `.tar.gz` format) can be found in the "contrib" folder
 
 ## Platforms
 
-TinyGL is compatible with Clang, GCC, TinyCC, and Open Watcom. Tested platforms:
+TinyGL has been tested with Clang, GCC, TinyCC, and Open Watcom. The following platforms have also been tested:
 
 - Linux
 - Windows
 - Haiku
 - MS-DOS
 - OS/2
+
+## Building
+
+TinyGL is built via CMake.
+
+Linux:
+```
+mkdir cmake-build && cd cmake-build
+cmake ..
+make
+```
 
 ## License
 
