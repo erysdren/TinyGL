@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
-project(tinygl DESCRIPTION "Software-rendered OpenGL" HOMEPAGE_URL "https://github.com/erysdren/tinygl" LANGUAGES C VERSION 0.4.2)
+project(TinyGL DESCRIPTION "Software-rendered OpenGL" HOMEPAGE_URL "https://github.com/erysdren/TinyGL" LANGUAGES C VERSION 0.4.2)
 
-option(TINYGL_BUILD_EXAMPLES "Build tinygl Examples" ON)
+option(TINYGL_BUILD_EXAMPLES "Build TinyGL Examples" ON)
 set(TINYGL_BPP 16 CACHE STRING "Native rendering bits-per-pixel")
 set_property(CACHE TINYGL_BPP PROPERTY STRINGS 8 15 16 24 32)
 
