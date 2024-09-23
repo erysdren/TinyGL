@@ -41,8 +41,9 @@ set(TINYGL_HEADERS
 
 add_library(tinygl STATIC ${TINYGL_SOURCES})
 target_include_directories(tinygl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
 target_compile_definitions(tinygl PUBLIC TGL_FEATURE_RENDER_BITS=${TINYGL_BPP})
+set_property(TARGET tinygl PROPERTY C_STANDARD 99)
+set_property(TARGET tinygl PROPERTY C_STANDARD_REQUIRED ON)
 
 find_library(MATH m)
 if(MATH)
