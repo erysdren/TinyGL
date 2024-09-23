@@ -1,4 +1,10 @@
 
+#ifndef UI_H
+#define UI_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* program-defined */
 void draw(void);
 void idle(void);
@@ -15,3 +21,8 @@ void swap_buffers(void);
 #define KEY_LEFT 0xe002
 #define KEY_RIGHT 0xe003
 #define KEY_ESCAPE 0xe004
+
+#ifdef __cplusplus
+}
+#endif
+#endif /* UI_H */

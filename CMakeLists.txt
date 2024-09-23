@@ -65,7 +65,7 @@ endif()
 find_package(SDL2)
 if(TINYGL_BUILD_EXAMPLES AND SDL2_FOUND)
 
-	add_library(tinygl_ui_sdl2 STATIC ${CMAKE_CURRENT_SOURCE_DIR}/examples/ui.c)
+	add_library(tinygl_ui_sdl2 STATIC ${CMAKE_CURRENT_SOURCE_DIR}/examples/ui_sdl2.c)
 	target_link_libraries(tinygl_ui_sdl2 PUBLIC tinygl)
 	target_link_libraries(tinygl_ui_sdl2 PUBLIC ${SDL2_LIBRARIES})
 	target_include_directories(tinygl_ui_sdl2 PUBLIC ${SDL2_INCLUDE_DIRS})
