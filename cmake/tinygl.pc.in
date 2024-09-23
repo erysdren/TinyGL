@@ -1,11 +1,9 @@
-prefix="@CMAKE_INSTALL_PREFIX@"
-exec_prefix="${prefix}"
-libdir="${prefix}/lib"
-includedir="${prefix}/include"
+libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/tinygl
 
 Name: @PROJECT_NAME@
 Description: @CMAKE_PROJECT_DESCRIPTION@
 URL: @CMAKE_PROJECT_HOMEPAGE_URL@
 Version: @PROJECT_VERSION@
-Cflags: -I"${includedir}" -I"${includedir}/GL"
-Libs: -L"${libdir}" -ltinygl
+Cflags: -I${includedir}
+Libs: -L${libdir} -ltinygl
