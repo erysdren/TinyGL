@@ -59,8 +59,7 @@ int ui_loop(int argc, char **argv, const char *name)
 	window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, ctx->width, ctx->height, SDL_WINDOW_RESIZABLE);
 
-	renderer = SDL_CreateRenderer(window, -1,
-		SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_SOFTWARE);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
 
 	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565,
 		SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
