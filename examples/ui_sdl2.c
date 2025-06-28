@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 #include <GL/gl.h>
 #include <GL/ostinygl.h>
@@ -56,13 +56,13 @@ int ui_loop(int argc, char **argv, const char *name)
 	reshape(ctx->width, ctx->height);
 
 	/* create sdl context */
-	window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, ctx->width, ctx->height, SDL_WINDOW_RESIZABLE);
+	window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, ctx->width, ctx->height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
 
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
 
-	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565,
-		SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
+	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565, SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
+
+	SDL_ShowWindow(window);
 
 	/* main loop */
 	running = SDL_TRUE;
