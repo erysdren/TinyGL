@@ -52,9 +52,8 @@ make
 
 MIT License
 
-Copyright (c) 1997-2022 Fabrice Bellard
-
-Copyright (c) 2023-2024 erysdren (it/she/they)
+Copyright (c) 1997-2022 Fabrice Bellard\
+Copyright (c) 2023-2025 erysdren (it/its)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
