@@ -22,6 +22,7 @@ The original versions (in `.tar.gz` format) can be found in the `archive` folder
 - [`texobj.c`](./examples/texobj.c) - Textured object demo by Brian Paul
 - [`ui_headless.c`](./examples/ui_headless.c) - TinyGL with `stb_image_write` by erysdren
 - [`ui_sdl2.c`](./examples/ui_sdl2.c) - TinyGL with SDL2 by erysdren
+- [`ui_sdl3.c`](./examples/ui_sdl3.c) - TinyGL with SDL3 by erysdren
 
 ## Thirdparty
 
