@@ -42,11 +42,11 @@ TinyGL has been tested with Clang, GCC, TinyCC, and Open Watcom. The following p
 
 TinyGL is built via CMake.
 
-Linux:
 ```
-mkdir cmake-build && cd cmake-build
-cmake ..
-make
+git clone https://github.com/erysdren/TinyGL
+cd TinyGL
+cmake -Bbuild -S.
+cmake --build build
 ```
 
 ## License
