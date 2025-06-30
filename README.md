@@ -18,6 +18,7 @@ The original versions (in `.tar.gz` format) can be found in the `archive` folder
 - [`cube.c`](./examples/cube.c) - glDrawElements example by erysdren
 - [`gears.c`](./examples/gears.c) - Gears demo by Brian Paul
 - [`mech.c`](./examples/mech.c) - glutmech by Simon Parkinson-Bates
+- [`morph3d.c`](./examples/morph3d.c) - 3D morphing objects demo by Marcelo F. Vianna
 - [`spin.c`](./examples/spin.c) - Spinning box demo by Brian Paul
 - [`texobj.c`](./examples/texobj.c) - Textured object demo by Brian Paul
 - [`ui_headless.c`](./examples/ui_headless.c) - TinyGL with `stb_image_write` by erysdren
