@@ -24,6 +24,14 @@ The original versions (in `.tar.gz` format) can be found in the `archive` folder
 - [`ui_sdl2.c`](./examples/ui_sdl2.c) - TinyGL with SDL2 by erysdren
 - [`ui_sdl3.c`](./examples/ui_sdl3.c) - TinyGL with SDL3 by erysdren
 
+## TODO
+
+- [ ] More multithreading friendly
+- [ ] Import more demos and examples, like from Mesa3D or Haiku
+- [ ] Remove stdlib assert() calls
+- [ ] Allow user to set custom allocator
+- [ ] Update SDL2 and SDL3 demos to work on Windows (see [#1](https://github.com/erysdren/TinyGL/issues/1))
+
 ## Thirdparty
 
 - [`stb_image_write.h`](https://github.com/nothings/stb/)
