@@ -12,6 +12,14 @@ extern "C" {
 /* gl version */
 #define GL_VERSION_1_1 1
 
+/* tinygl version */
+#define TINYGL_MAKE_VERSION(major, minor, patch) (((major) * 1000000) + ((minor) * 1000) + (patch))
+#define __TINYGL_VERSION_MAJOR__ 0
+#define __TINYGL_VERSION_MINOR__ 4
+#define __TINYGL_VERSION_PATCH__ 2
+#define __TINYGL_VERSION__ TINYGL_MAKE_VERSION(__TINYGL_VERSION_MAJOR__, __TINYGL_VERSION_MINOR__, __TINYGL_VERSION_PATCH__)
+#define __TINYGL__ __TINYGL_VERSION__
+
 /* gl constants */
 enum
 {
