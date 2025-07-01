@@ -7,7 +7,7 @@
  * Brian Paul
  */
 
-/* converted to TinyGL by erysdren (it/she) */
+/* converted to TinyGL by erysdren (it/its) */
 
 #include <math.h>
 #include <stdio.h>
