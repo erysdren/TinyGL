@@ -27,6 +27,7 @@ The original releases can be found in the `archive` folder.
 - [`mech.c`](./examples/mech.c) - glutmech by Simon Parkinson-Bates
 - [`morph3d.c`](./examples/morph3d.c) - 3D morphing objects demo by Marcelo F. Vianna
 - [`spin.c`](./examples/spin.c) - Spinning box demo by Brian Paul
+- [`teapot.c`](./examples/teapot.c) - Spinning Utah Teapot demo based on GLTeapot from [Haiku](https://www.haiku-os.org/)
 - [`texobj.c`](./examples/texobj.c) - Textured object demo by Brian Paul
 - [`ui_headless.c`](./examples/ui_headless.c) - TinyGL with `stb_image_write` by erysdren
 - [`ui_sdl2.c`](./examples/ui_sdl2.c) - TinyGL with SDL2 by erysdren

@@ -18,7 +18,7 @@ if(libmath)
 	target_link_libraries(tinygl PUBLIC ${libmath})
 endif()
 
-set(TINYGL_EXAMPLES gears mech spin texobj bounce cube morph3d)
+set(TINYGL_EXAMPLES gears mech spin texobj bounce cube morph3d teapot)
 
 if(TINYGL_BUILD_EXAMPLES)
 	add_library(tinygl_ui_headless STATIC ${PROJECT_SOURCE_DIR}/examples/ui_headless.c)
