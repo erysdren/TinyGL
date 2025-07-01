@@ -11,7 +11,7 @@ file(GLOB TINYGL_HEADERS "${PROJECT_SOURCE_DIR}/source/*.h")
 add_library(tinygl ${TINYGL_SOURCES})
 target_include_directories(tinygl PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_compile_definitions(tinygl PRIVATE TGL_FEATURE_RENDER_BITS=${TINYGL_BPP})
-set_target_properties(tinygl PROPERTIES C_STANDARD_REQUIRED ON C_STANDARD 23)
+set_target_properties(tinygl PROPERTIES C_STANDARD_REQUIRED ON C_STANDARD 99)
 
 find_library(libmath m)
 if(libmath)
