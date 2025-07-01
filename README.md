@@ -1,16 +1,23 @@
 # TinyGL
 
-![a 3D render of multiple gears floating in empty space, one red, one blue, and one green.](.github/tgl_gears.png)
+![a 3D render of multiple gears floating in empty space, one red, one blue, and one green](.github/tgl_gears.png)
 
-This is an extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/) project.
+This is an extension of [Fabrice Bellard's TinyGL](https://bellard.org/TinyGL/)
+project.
 
-TinyGL is an implementation of the OpenGL 1.2 specification in pure software, using no hardware acceleration. It is designed to be lightweight and fast, using highly optimized rasterization routines originally written by [Fabrice Bellard](https://bellard.org).
+TinyGL is an implementation of the OpenGL 1.2 specification in pure software,
+using no hardware acceleration. It is designed to be lightweight and fast,
+using optimized rasterization routines originally written by
+[Fabrice Bellard](https://bellard.org).
 
-The minimum requirements to compile & run this code is ISO C99 compliance and a 32-bit processor respectively.
+This code requires atleast a C99 compliant compiler.
 
-TinyGL can also be installed as a system-wide library and then accessed with `pkg-config`.
+This library is also meant to be a drop-in replacement for many OpenGL 1.1 and
+1.2 era programs. If you're targeting both TinyGL and other OpenGL
+implementations, you can check against the `__TINYGL__` macro to gate TinyGL
+specific code.
 
-The original versions (in `.tar.gz` format) can be found in the `archive` folder.
+The original releases can be found in the `archive` folder.
 
 ## Examples
 
@@ -39,13 +46,13 @@ The original versions (in `.tar.gz` format) can be found in the `archive` folder
 
 ## Platforms
 
-TinyGL has been tested with Clang, GCC, TinyCC, and Open Watcom. The following platforms have also been tested:
+TinyGL has been tested with Clang, GCC, TinyCC, and Open Watcom. The following
+platforms have also been tested:
 
 - Linux
 - Windows
 - Haiku
 - MS-DOS
-- OS/2
 
 ## Building
 
