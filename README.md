@@ -40,6 +40,7 @@ The original releases can be found in the `archive` folder.
 - [ ] Remove stdlib assert() calls
 - [ ] Allow user to set custom allocator
 - [ ] Update SDL2 and SDL3 demos to work on Windows (see [#1](https://github.com/erysdren/TinyGL/issues/1))
+- [ ] Restore glx code and examples
 
 ## Thirdparty
 
