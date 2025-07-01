@@ -36,7 +36,7 @@ The original releases can be found in the `archive` folder.
 ## TODO
 
 - [ ] More multithreading friendly
-- [ ] Import more demos and examples, like from Mesa3D or Haiku
+- [x] Import more demos and examples, like from Mesa3D or Haiku
 - [ ] Remove stdlib assert() calls
 - [ ] Allow user to set custom allocator
 - [ ] Update SDL2 and SDL3 demos to work on Windows (see [#1](https://github.com/erysdren/TinyGL/issues/1))
