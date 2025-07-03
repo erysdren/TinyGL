@@ -66,6 +66,11 @@ void gluPerspective( GLdouble fovy, GLdouble aspect,
    glFrustum( xmin, xmax, ymin, ymax, zNear, zFar );
 }
 
+void gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top)
+{
+	glOrtho(left, right, bottom, top, -1, 1);
+}
+
 GLUquadricObj *gluNewQuadric(void)
 {
   return NULL;
