@@ -141,6 +141,10 @@ So the angle is:
 #include "ui.h"
 #include <math.h>
 
+#ifndef M_PI
+#  define M_PI 3.14159265
+#endif
+
 #define Scale                      0.3
 
 #define VectMul(X1,Y1,Z1,X2,Y2,Z2) (Y1)*(Z2)-(Z1)*(Y2),(Z1)*(X2)-(X1)*(Z2),(X1)*(Y2)-(Y1)*(X2)
@@ -737,6 +741,7 @@ GLenum key( int k )
   }
   pinit();
   // glutPostRedisplay();
+  return GL_FALSE;
 }
 
 static void pinit(void)
