@@ -48,8 +48,8 @@ The original releases can be found in the `archive` folder.
 
 ## Platforms
 
-TinyGL has been tested with Clang, GCC, TinyCC, and Open Watcom. The following
-platforms have also been tested:
+TinyGL has been tested with Clang, GCC, TinyCC, MSVC, and Open Watcom. The
+following platforms have also been tested:
 
 - Linux
 - Windows
