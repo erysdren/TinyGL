@@ -13,9 +13,17 @@ target_include_directories(tinygl PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_compile_definitions(tinygl PRIVATE TGL_FEATURE_RENDER_BITS=${TINYGL_BPP})
 set_target_properties(tinygl PROPERTIES C_STANDARD_REQUIRED ON C_STANDARD 99)
 
-find_library(libmath m)
-if(libmath)
-	target_link_libraries(tinygl PUBLIC ${libmath})
+if(NOT MSVC)
+	find_library(libmath m)
+	if(libmath)
+		target_link_libraries(tinygl PRIVATE ${libmath})
+	endif()
+endif()
+
+if(MSVC)
+	target_compile_definitions(tinygl PRIVATE _CRT_SECURE_NO_WARNINGS)
+	target_compile_options(tinygl PRIVATE /wd4244) # disable int truncation warnings
+	target_compile_options(tinygl PRIVATE /wd4305) # disable float truncation warnings
 endif()
 
 set(TINYGL_EXAMPLES gears mech spin texobj bounce cube morph3d teapot)
@@ -26,6 +34,11 @@ if(TINYGL_BUILD_EXAMPLES)
 	foreach(example IN LISTS TINYGL_EXAMPLES)
 		add_executable(${example}_headless ${PROJECT_SOURCE_DIR}/examples/${example}.c)
 		target_link_libraries(${example}_headless PUBLIC tinygl_ui_headless)
+		if(MSVC)
+			target_compile_definitions(${example}_headless PRIVATE _CRT_SECURE_NO_WARNINGS)
+			target_compile_options(${example}_headless PRIVATE /wd4244) # disable int truncation warnings
+			target_compile_options(${example}_headless PRIVATE /wd4305) # disable float truncation warnings
+		endif()
 	endforeach()
 endif()
 
@@ -41,6 +54,11 @@ if(TINYGL_BUILD_EXAMPLES AND SDL2_FOUND)
 		if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
 			target_compile_definitions(${example}_sdl2 PUBLIC SDL_DISABLE_IMMINTRIN_H)
 		endif()
+		if(MSVC)
+			target_compile_definitions(${example}_sdl2 PRIVATE _CRT_SECURE_NO_WARNINGS)
+			target_compile_options(${example}_sdl2 PRIVATE /wd4244) # disable int truncation warnings
+			target_compile_options(${example}_sdl2 PRIVATE /wd4305) # disable float truncation warnings
+		endif()
 	endforeach()
 endif()
 
@@ -55,6 +73,11 @@ if(TINYGL_BUILD_EXAMPLES AND SDL3_FOUND)
 		target_link_libraries(${example}_sdl3 PUBLIC tinygl_ui_sdl3)
 		if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
 			target_compile_definitions(${example}_sdl3 PUBLIC SDL_DISABLE_IMMINTRIN_H)
+		endif()
+		if(MSVC)
+			target_compile_definitions(${example}_sdl3 PRIVATE _CRT_SECURE_NO_WARNINGS)
+			target_compile_options(${example}_sdl3 PRIVATE /wd4244) # disable int truncation warnings
+			target_compile_options(${example}_sdl3 PRIVATE /wd4305) # disable float truncation warnings
 		endif()
 	endforeach()
 endif()
