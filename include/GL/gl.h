@@ -698,26 +698,34 @@ void glBegin(int type);
 void glEnd(void);
 
 #define PROTO_GL1(name) \
+void gl ## name ## 1ub(GLubyte); \
 void gl ## name ## 1f(float); \
 void gl ## name ## 1d(double); \
+void gl ## name ## 1ubv(GLubyte *); \
 void gl ## name ## 1fv(float *); \
 void gl ## name ## 1dv(double *);
 
 #define PROTO_GL2(name) \
+void gl ## name ## 2ub(GLubyte ,GLubyte); \
 void gl ## name ## 2f(float ,float); \
 void gl ## name ## 2d(double ,double); \
+void gl ## name ## 2ubv(GLubyte *); \
 void gl ## name ## 2fv(float *); \
 void gl ## name ## 2dv(double *);
 
 #define PROTO_GL3(name) \
+void gl ## name ## 3ub(GLubyte ,GLubyte ,GLubyte); \
 void gl ## name ## 3f(float ,float ,float); \
 void gl ## name ## 3d(double ,double ,double); \
+void gl ## name ## 3ubv(GLubyte *); \
 void gl ## name ## 3fv(float *); \
 void gl ## name ## 3dv(double *);
 
 #define PROTO_GL4(name) \
+void gl ## name ## 4ub(GLubyte ,GLubyte ,GLubyte ,GLubyte); \
 void gl ## name ## 4f(float ,float ,float, float ); \
 void gl ## name ## 4d(double ,double ,double, double ); \
+void gl ## name ## 4ubv(GLubyte *); \
 void gl ## name ## 4fv(float *); \
 void gl ## name ## 4dv(double *);
 

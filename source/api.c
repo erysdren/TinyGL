@@ -99,6 +99,25 @@ void glColor3fv(float *v)
   glColor4f(v[0],v[1],v[2],1);
 }
 
+void glColor3ub(GLubyte x, GLubyte y, GLubyte z)
+{
+  glColor4f((float)x/255.0f, (float)y/255.0f, (float)z/255.0f, 1);
+}
+
+void glColor3ubv(GLubyte *v)
+{
+  glColor4f((float)v[0]/255.0f, (float)v[1]/255.0f, (float)v[2]/255.0f, 1);
+}
+
+void glColor4ub(GLubyte x, GLubyte y, GLubyte z, GLubyte w)
+{
+  glColor4f((float)x/255.0f, (float)y/255.0f, (float)z/255.0f, (float)w/255.0f);
+}
+
+void glColor4ubv(GLubyte *v)
+{
+  glColor4f((float)v[0]/255.0f, (float)v[1]/255.0f, (float)v[2]/255.0f, (float)v[3]/255.0f);
+}
 
 /* TexCoord */
 
