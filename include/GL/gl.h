@@ -815,6 +815,9 @@ void glGetIntegerv(int pname,int *params);
 void glGetFloatv(int pname, float *v);
 void glFrontFace(int mode);
 
+void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height,
+				GLenum format, GLenum type, void *data);
+
 /* opengl 1.2 arrays */
 void glEnableClientState(GLenum array);
 void glDisableClientState(GLenum array);

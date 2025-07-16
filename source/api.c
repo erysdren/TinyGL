@@ -693,6 +693,22 @@ void glHint(int target,int mode)
   gl_add_op(p);
 }
 
+void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *data)
+{
+	GLParam p[8];
+
+	p[0].op=OP_ReadPixels;
+	p[1].i=x;
+	p[2].i=y;
+	p[3].i=width;
+	p[4].i=height;
+	p[5].i=format;
+	p[6].i=type;
+	p[7].p=data;
+
+	gl_add_op(p);
+}
+
 /* Non standard functions */
 
 void glDebug(int mode)

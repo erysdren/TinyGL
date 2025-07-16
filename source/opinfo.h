@@ -53,6 +53,8 @@ ADD_OP(PolygonMode,2,"%C %C")
 ADD_OP(CallList,1,"%d")
 ADD_OP(Hint,2,"%C %C")
 
+ADD_OP(ReadPixels,7,"%d %d %d %d %C %C %p")
+
 /* special opcodes */
 ADD_OP(EndList,0,"")
 ADD_OP(NextBuffer,1,"%p")

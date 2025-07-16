@@ -139,6 +139,17 @@ void glopHint(GLContext *c,GLParam *p)
 #endif
 }
 
+void glopReadPixels(GLContext *c, GLParam *p)
+{
+	int x = p[1].i;
+	int y = p[2].i;
+	int width = p[3].i;
+	int height = p[4].i;
+	int format = p[5].i;
+	int type = p[6].i;
+	void *data = p[7].p;
+}
+
 void 
 glopPolygonOffset(GLContext *c, GLParam *p)
 {
