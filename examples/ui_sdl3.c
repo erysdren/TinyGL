@@ -61,7 +61,7 @@ int ui_loop(int argc, char **argv, const char *name)
 	renderer = SDL_CreateRenderer(window, NULL);
 	SDL_SetRenderVSync(renderer, 1);
 
-	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565, SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
+	texture = SDL_CreateTexture(renderer, SDL_GetWindowPixelFormat(window), SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
 
 	SDL_ShowWindow(window);
 
@@ -91,7 +91,7 @@ int ui_loop(int argc, char **argv, const char *name)
 
 					/* destroy texture and make new one */
 					SDL_DestroyTexture(texture);
-					texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB565, SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
+					texture = SDL_CreateTexture(renderer, SDL_GetWindowPixelFormat(window), SDL_TEXTUREACCESS_STREAMING, ctx->width, ctx->height);
 					break;
 				}
 
@@ -126,7 +126,26 @@ int ui_loop(int argc, char **argv, const char *name)
 /* swap buffers */
 void swap_buffers(void)
 {
-	SDL_UpdateTexture(texture, NULL, ctx->pixels, ctx->width * (ctx->depth / 8));
+	SDL_Surface *src = SDL_CreateSurfaceFrom(ctx->width, ctx->height, SDL_PIXELFORMAT_RGB565, ctx->pixels, ctx->width * (ctx->depth / 8));
+	SDL_Surface *dst = SDL_CreateSurfaceFrom(ctx->width, ctx->height, SDL_GetWindowPixelFormat(window), NULL, 0);
+
+	if (SDL_LockTexture(texture, NULL, &dst->pixels, &dst->pitch))
+	{
+		if (!SDL_BlitSurface(src, NULL, dst, NULL))
+		{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "surface blit failed: %s", SDL_GetError());
+		}
+
+		SDL_UnlockTexture(texture);
+	}
+	else
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "texture lock failed: %s", SDL_GetError());
+	}
+
+	SDL_DestroySurface(dst);
+	SDL_DestroySurface(src);
+
 	SDL_RenderClear(renderer);
 	SDL_RenderTexture(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
