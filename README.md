@@ -55,6 +55,7 @@ following platforms have also been tested:
 - Windows
 - Haiku
 - MS-DOS
+- MacOS
 
 ## Building
 
