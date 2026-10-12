@@ -56,6 +56,7 @@ following platforms have also been tested:
 - Haiku
 - MS-DOS
 - MacOS
+- Playstation 2
 
 ## Building
 

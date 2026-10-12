@@ -11,8 +11,13 @@
 #include "ui.h"
 
 /* constants */
+#ifdef __PS2__
+#define WIDTH 640
+#define HEIGHT 448
+#else
 #define WIDTH 800
 #define HEIGHT 600
+#endif
 #define BPP 16
 
 /* globals */
@@ -57,6 +62,10 @@ int ui_loop(int argc, char **argv, const char *name)
 
 	/* create sdl context */
 	window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, ctx->width, ctx->height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
+
+#ifdef PS2
+	SDL_SetHint(SDL_HINT_PS2_DYNAMIC_VSYNC, "1");
+#endif
 
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
 

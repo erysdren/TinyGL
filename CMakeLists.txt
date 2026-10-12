@@ -40,6 +40,10 @@ if(TINYGL_BUILD_EXAMPLES)
 			target_compile_options(${example}_headless PRIVATE /wd4305) # disable float truncation warnings
 		endif()
 	endforeach()
+
+	if(PS2)
+		set(CMAKE_EXECUTABLE_SUFFIX .elf)
+	endif()
 endif()
 
 find_package(SDL2)

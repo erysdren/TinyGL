@@ -11,8 +11,13 @@
 #include "ui.h"
 
 /* constants */
+#ifdef __PS2__
+#define WIDTH 640
+#define HEIGHT 448
+#else
 #define WIDTH 800
 #define HEIGHT 600
+#endif
 #define BPP 16
 
 /* globals */
